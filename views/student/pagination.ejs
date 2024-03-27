@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+      }
+      li {
+        background-color: #c9d7dd;
+        height: 20px;
+        width: 80px;
+        text-align: center;
+        list-style-type: none;
+        padding: 10px 20px;
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <% if (page === 1) { %>
+      <li onclick="page_change('<%=page%>')"><%=page%></li>
+      <li id="pagemax" onclick="page_change('<%=page+1%>')"><%=page+1%></li>
+      <li onclick="last_page('<%=last_page%>')">>></li>
+      <% } else if (page == last_page) { %>
+      <li onclick="first_page('1')"><<</li>
+      <li id="pagemin" onclick="page_change('<%=page-1%>')"><%=page-1%></li>
+      <% } else { %>
+      <li onclick="first_page('1')"><<</li>
+      <li id="pagemin" onclick="page_change('<%=page-1%>')"><%=page-1%></li>
+      <li onclick="page_change('<%=page%>')"><%=page%></li>
+      <li id="pagemax" onclick="page_change('<%=page+1%>')"><%=page+1%></li>
+      <li onclick="last_page('<%=last_page%>')">>></li>
+      <% } %>
+    </ul>
+    <script>
+      const first_page = (page) => {
+        window.location = `http://localhost:8000/student?page=${page}&month=${month}`;
+      };
+      const last_page = (page) => {
+        window.location = `http://localhost:8000/student?page=${page}&month=${month}`;
+      };
+      const page_change = (page) => {
+        if (page < 1 || page > "<%=last_page%>") {
+          return 0;
+        }
+        window.location = `http://localhost:8000/student?page=${page}&month=${month}`;
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .text-center {
+        text-align: center;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      table {
+        margin: 30px auto;
+      }
+      table,
+      tr,
+      td,
+      th {
+        border: 2px solid black;
+        border-collapse: collapse;
+      }
+      td,
+      th {
+        text-align: center;
+        height: 50px;
+        width: 200px;
+      }
+      th {
+        background-color: #99bc85;
+      }
+      tr {
+        background-color: #e1f0da;
+      }
+    </style>
+  </head>
+  <body>
+    <%- include('../heder.ejs'); %>
+    <h1 class="text-center">Student Marks</h1>
+    <div>
+      <h3 class="text-center" style="margin: 10px 0">
+        <%= student.Student_ID%> <%= student.First_name%> <%=
+        student.Last_name%> Present Days: <%= student.PRESENT_DAYS%>/93
+        PERCENTAGE : <%= student.PERCENTAGE%>
+      </h3>
+    </div>
+    <table>
+      <tr>
+        <% table_heder.map((e)=> { %>
+        <th><%=e.name%></th>
+        <% }) %>
+      </tr>
+      <% data.map((e)=> { %>
+      <tr>
+        <td><%=e.Subject_ID%></td>
+        <td><%=e.Subject_name%></td>
+        <td><%=e.Terminal_Theory_marks%></td>
+        <td><%=e.Terminal_Practical_marks%></td>
+        <td><%=e.Prelims_Theory_marks%></td>
+        <td><%=e.Prelims_Practical_marks%></td>
+        <td><%=e.Final_Theory_marks%></td>
+        <td><%=e.Final_Practical_marks%></td>
+        <td><%=e.total_marks%></td>
+      </tr>
+      <% }) %>
+      <tr>
+        <td colspan="8">TOTAL MARKS :</td>
+        <td><%=total_marks%></td>
+      </tr>
+      <tr>
+        <td colspan="8">PERCENTAGE :</td>
+        <%let percentage =( total_marks / 12).toFixed(2)%>
+        <td><%=percentage%>%</td>
+      </tr>
+    </table>
+  </body>
+</html>

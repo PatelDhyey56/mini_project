@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .text-center {
+        text-align: center;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body,
+      table {
+        margin: 50px 10px;
+      }
+      table,
+      tr,
+      td,
+      th {
+        border: 2px solid black;
+        border-collapse: collapse;
+      }
+      td,
+      th {
+        text-align: center;
+        height: 50px;
+        width: 200px;
+      }
+      button {
+        color: black;
+        background-color: #88ab8e;
+        width: 100px;
+        height: 20px;
+        border-radius: 100px;
+      }
+      ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+      }
+      li {
+        background-color: #c9d7dd;
+        height: 20px;
+        width: 80px;
+        text-align: center;
+        list-style-type: none;
+        padding: 10px 20px;
+        border: 1px solid black;
+      }
+      th {
+        background-color: #88ab8e;
+      }
+      tr {
+        background-color: #eee7da;
+      }
+    </style>
+  </head>
+  <body>
+    <%- include('../heder.ejs'); %>
+    <h2 class="text-center">ALL STUDENTS</h2>
+    <table>
+      <tr>
+        <% table_heder.map((e)=> { %>
+        <th><%=e.name%></th>
+        <% }) %>
+        <th></th>
+      </tr>
+      <% data.map((e)=> { %>
+      <tr>
+        <td><%=e.Student_ID%></td>
+        <td><%=e.First_name%></td>
+        <td><%=e.Terminal_Theory_marks%></td>
+        <td><%=e.Terminal_Practical_marks%></td>
+        <td><%=e.Prelims_Theory_marks%></td>
+        <td><%=e.Prelims_Practical_marks%></td>
+        <td><%=e.Final_Theory_marks%></td>
+        <td><%=e.Final_Practical_marks%></td>
+        <td><%=e.Total_marks%></td>
+        <td>
+          <button
+            onclick="Student_details('<%=e.Student_ID%>','<%=e.Total_marks%>')"
+          >
+            Details
+          </button>
+        </td>
+      </tr>
+      <% }) %>
+    </table>
+    <ul>
+      <% if (page === 1) { %>
+      <li onclick="page_change('<%=page%>')"><%=page%></li>
+      <li id="pagemax" onclick="page_change('<%=page+1%>')"><%=page+1%></li>
+      <li onclick="last_page('<%=last_page%>')">>></li>
+      <% } else if (page == last_page) { %>
+      <li onclick="first_page('1')"><<</li>
+      <li id="pagemin" onclick="page_change('<%=page-1%>')"><%=page-1%></li>
+      <% } else { %>
+      <li onclick="first_page('1')"><<</li>
+      <li id="pagemin" onclick="page_change('<%=page-1%>')"><%=page-1%></li>
+      <li onclick="page_change('<%=page%>')"><%=page%></li>
+      <li id="pagemax" onclick="page_change('<%=page+1%>')"><%=page+1%></li>
+      <li onclick="last_page('<%=last_page%>')">>></li>
+      <% } %>
+    </ul>
+    <script>
+      const first_page = (page) => {
+        window.location = `http://localhost:8000/result?page=${page}`;
+      };
+      const last_page = (page) => {
+        window.location = `http://localhost:8000/result?page=${page}`;
+      };
+      const page_change = (page) => {
+        if (page < 1 || page > "<%=last_page%>") {
+          return 0;
+        }
+        window.location = `http://localhost:8000/result?page=${page}`;
+      };
+      const Student_details = (id, total) => {
+        window.location = `http://localhost:8000/student/result/report/${id}/${total}`;
+      };
+    </script>
+  </body>
+</html>

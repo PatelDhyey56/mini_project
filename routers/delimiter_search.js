@@ -91,7 +91,7 @@ router.get("/", (req, res) => {
           if (err) {
             res.render("error_page");
           } else {
-            res.render("delimiter_search/home", {
+            res.render("search/delimiter_search", {
               fields: fields,
               data: result,
               string,
