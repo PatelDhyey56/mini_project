@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <DIV class="m-5">
+      <table class="table table-hover table-bordered table-striped">
+        <tr>
+          <%fields.map(e=>{%>
+          <th><%=e.name%></th>
+          <%})%>
+        </tr>
+        <%data.map(r=>{%>
+        <tr>
+          <%fields.map(e=>{%>
+          <td><%=r[e.name]%></td>
+          <%})%>
+        </tr>
+        <%})%>
+      </table>
+    </DIV>
+  </body>
+</html>

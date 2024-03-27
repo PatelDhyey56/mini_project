@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <%if(total_row>15){%>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center pagination-lg">
+        <% if (page === 1) { %>
+        <li class="page-item page-link" onclick="page_change('<%=page%>')">
+          <%=page%>
+        </li>
+        <li
+          class="page-item page-link"
+          id="pagemax"
+          onclick="page_change('<%=page+1%>')"
+        >
+          <%=page+1%>
+        </li>
+        <li class="page-item page-link" onclick="last_page('<%=last_page%>')">
+          >>
+        </li>
+        <% } else if (page == last_page) { %>
+        <li class="page-item page-link" onclick="first_page('1')"><<</li>
+        <li
+          class="page-item page-link"
+          id="pagemin"
+          onclick="page_change('<%=page-1%>')"
+        >
+          <%=page-1%>
+        </li>
+        <% } else { %>
+        <li class="page-item page-link" onclick="first_page('1')"><<</li>
+        <li
+          class="page-item page-link"
+          id="pagemin"
+          onclick="page_change('<%=page-1%>')"
+        >
+          <%=page-1%>
+        </li>
+        <li class="page-item page-link" onclick="page_change('<%=page%>')">
+          <%=page%>
+        </li>
+        <li
+          class="page-item page-link"
+          id="pagemax"
+          onclick="page_change('<%=page+1%>')"
+        >
+          <%=page+1%>
+        </li>
+        <li class="page-item page-link" onclick="last_page('<%=last_page%>')">
+          >>
+        </li>
+        <% } %>
+      </ul>
+    </nav>
+    <%}%>
+    <script>
+      const first_page = (page) => {
+        var searchParams = new URLSearchParams(window.location.search);
+        searchParams.set("page", page);
+        window.location =
+          window.location.pathname + "?" + searchParams.toString();
+      };
+      const last_page = (page) => {
+        var searchParams = new URLSearchParams(window.location.search);
+        searchParams.set("page", page);
+        window.location =
+          window.location.pathname + "?" + searchParams.toString();
+      };
+      const page_change = (page) => {
+        var searchParams = new URLSearchParams(window.location.search);
+        searchParams.set("page", page);
+        window.location =
+          window.location.pathname + "?" + searchParams.toString();
+      };
+    </script>
+  </body>
+</html>
