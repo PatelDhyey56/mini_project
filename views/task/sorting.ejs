@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sorting</title>
+  </head>
+  <body>
+    <center>
+      <h2>PATEL DHYEY</h2>
+      <h2>24DEV054</h2>
+    </center>
+    <h1><center>Sorting</center></h1>
+    <center>
+      INT :
+      <input type="text" id="inputint" />
+      <input type="submit" onclick="inputfunint()" value="Sort" />
+      <h4 id="int"></h4>
+    </center>
+    <center>
+      CHARACTORS :
+      <input type="text" id="inputchar" />
+      <input type="submit" onclick="inputfunchar()" value="Sort" />
+      <h4 id="char"></h4>
+    </center>
+    <script>
+      let arr1 = [
+        1, 2, 3, 4, 5, 6, 7, 243, 435, 5645, 65467, 678578, 233, 456, 546, 23,
+        23, 1,
+      ];
+      // let arr2 = ["ram", "ranjit", "laksh", "labh", "sita"];
+      //   arr.sort();
+
+      let inputfunint = () => {
+        let string = document.getElementById("inputint").value;
+        let arr = [];
+        arr = string.split(",");
+        for (let i = 0; i < arr.length; i++) {
+          arr[i] = Number(arr[i]);
+        }
+        console.log(arr);
+        bubble(arr);
+        document.getElementById("int").innerText = arr;
+      };
+      let inputfunchar = () => {
+        let string = document.getElementById("inputchar").value;
+        let arr = [];
+        arr = string.split(",");
+        selection(arr);
+        console.log(arr);
+        document.getElementById("char").innerText = arr;
+      };
+
+      let bubble = (arr) => {
+        for (let i = 0; i < arr.length - 1; i++) {
+          for (let j = 0; j < arr.length - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+              //   console.log(arr[j]);
+              let temp = arr[j];
+              arr[j] = arr[j + 1];
+              arr[j + 1] = temp;
+            }
+          }
+        }
+      };
+      let selection = (arr) => {
+        for (let i = 0; i < arr.length - 1; i++) {
+          for (let j = i + 1; j < arr.length; j++) {
+            if (arr[i] > arr[j]) {
+              let temp = arr[i];
+              arr[i] = arr[j];
+              arr[j] = temp;
+            }
+          }
+        }
+      };
+
+      let insertion = (arr) => {
+        for (let i = 0; i < arr.length; i++) {
+          let f = arr[i];
+          let j = i - 1;
+          while (f < arr[j] && j >= 0) {
+            arr[j + 1] = arr[j];
+            j--;
+          }
+          arr[j + 1] = f;
+        }
+      };
+    </script>
+  </body>
+</html>

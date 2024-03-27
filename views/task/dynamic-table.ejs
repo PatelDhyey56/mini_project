@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Table Editing</title>
+  </head>
+  <style>
+    * {
+      margin: 0%;
+      padding: 0%;
+    }
+    body {
+      margin: 5%;
+    }
+    table {
+      width: 100%;
+    }
+    table,
+    tr,
+    td {
+      padding: 1%;
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    .C1 {
+      color: white;
+      background-color: black;
+    }
+    .contener_top {
+      margin: 1% 0;
+      display: flex;
+      justify-content: end;
+    }
+    .contener_down {
+      margin: 1% 0;
+      display: flex;
+    }
+    .PLUS {
+      margin: 0 1%;
+      width: 10%;
+      color: white;
+      background-color: black;
+    }
+    .remove {
+      margin: 0 1%;
+      width: 10%;
+      color: white;
+      background-color: black;
+    }
+  </style>
+  <body>
+    <center>
+      <h2>PATEL DHYEY</h2>
+      <h2>24DEV054</h2>
+    </center>
+    <h1><center>Table Editer</center></h1>
+    <h3><center>You can add & remove rows & colums</center></h3>
+    <div class="contener_top">
+      <b> Colums :</b>
+      <div class="PLUS" onclick="addcol()"><center>+</center></div>
+      <div class="remove" onclick="removecol()"><center>-</center></div>
+    </div>
+    <table id="table">
+      <tr>
+        <td class="C1"></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td class="C1"></td>
+      </tr>
+    </table>
+    <div class="contener_down">
+      <div class="PLUS" onclick="addrow()"><center>+</center></div>
+      <div class="remove" onclick="removerow()"><center>-</center></div>
+      <b> : Rows </b>
+    </div>
+    <div id="ex"></div>
+    <script>
+      let totalcount = {
+        colcount: 2,
+        rowcount: 2,
+      };
+      function addcol() {
+        let count = totalcount.colcount;
+        let rowcount = totalcount.rowcount;
+        // console.log(count);
+        if (count % 2 == 0) {
+          for (let i = 0; i < rowcount; i++) {
+            let row = document.createElement("td");
+            if (i % 2 == 0) {
+              row.setAttribute("class", "C1");
+              let col = document.getElementsByTagName("tr")[i].appendChild(row);
+            }
+            let col = document.getElementsByTagName("tr")[i].appendChild(row);
+          }
+        } else {
+          for (let i = 0; i < rowcount; i++) {
+            let row = document.createElement("td");
+            if (i % 2 != 0) {
+              row.setAttribute("class", "C1");
+              let col = document.getElementsByTagName("tr")[i].appendChild(row);
+            }
+            let col = document.getElementsByTagName("tr")[i].appendChild(row);
+          }
+        }
+        totalcount.colcount = totalcount.colcount + 1;
+        // console.log(count);
+      }
+      function removecol() {
+        let count = totalcount.colcount;
+        let rowcount = totalcount.rowcount;
+        if (count <= 2) {
+          alert("Can't remove col");
+        } else {
+          // console.log(count);
+          var table = document.getElementById("table");
+          var row = table.rows;
+          for (let i = 0; i < rowcount; i++) {
+            row[i].deleteCell(count - 1);
+          }
+          totalcount.colcount = totalcount.colcount - 1;
+          // console.log(count);
+        }
+      }
+      function addrow() {
+        let count = totalcount.rowcount;
+        let colcount = totalcount.colcount;
+        // console.log(count);
+        let row = document.createElement("tr");
+        if (count % 2 == 0) {
+          for (let i = 0; i < colcount; i++) {
+            let col = document.createElement("td");
+            if (i % 2 == 0) {
+              col.setAttribute("class", "C1");
+            }
+            row.appendChild(col);
+          }
+        } else {
+          for (let i = 0; i < colcount; i++) {
+            let col = document.createElement("td");
+            if (i % 2 != 0) {
+              col.setAttribute("class", "C1");
+            }
+            row.appendChild(col);
+          }
+        }
+        document.getElementById("table").appendChild(row);
+        totalcount.rowcount = totalcount.rowcount + 1;
+        console.log(totalcount.rowcount);
+      }
+      function removerow() {
+        let count = totalcount.rowcount;
+        if (count <= 2) {
+          alert("Can't remove Row");
+        } else {
+          count = count - 1;
+          // console.log(count);
+          document.getElementById("table").deleteRow(count);
+          totalcount.rowcount = totalcount.rowcount - 1;
+          // console.log(count);
+        }
+      }
+    </script>
+  </body>
+</html>

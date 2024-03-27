@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CUCU CUBE</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <style>
+      * {
+        margin: 0%;
+        padding: 0%;
+        background-color: aliceblue;
+      }
+      body {
+        margin: 5%;
+      }
+      #container {
+        margin: 1%;
+        padding: 1%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      table {
+        height: 250px;
+        width: 80%;
+      }
+      table,
+      tr,
+      td {
+        margin: auto;
+        padding: 1%;
+        border: 2px solid black;
+        /* border-collapse: collapse; */
+      }
+      td {
+        background-color: rgb(158, 162, 214);
+      }
+      .c1 {
+        background-color: rgb(154, 159, 238);
+      }
+      .center {
+        margin: 1%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .reset {
+        color: white;
+        background-color: black;
+        height: 50px;
+        width: 100px;
+        border-radius: 2000px;
+        /* visibility: hidden; */
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <center>
+        <h2>PATEL DHYEY</h2>
+        <h2>24DEV054</h2>
+        <h4>SELECT DIFFERENT COLOR :</h4>
+        <h5 id="timer">Time : 00:30</h5>
+      </center>
+    </div>
+    <div id="container">
+      <table id="table">
+        <tr>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <center>
+        <input
+          type="submit"
+          id="start"
+          class="btn btn-dark"
+          name="start"
+          onclick="start()"
+          value="Start"
+        />
+        <input
+          id="reset"
+          type="reset"
+          onclick="window.location.reload();"
+          value="Reset"
+          class="btn btn-dark"
+        />
+      </center>
+      <h4 class="m-3">
+        <center>
+          <center id="score"></center>
+        </center>
+      </h4>
+    </div>
+    <script>
+      var timeLeft = 30;
+      var count = 2;
+      var color_td_index = 2;
+      var score = 0;
+      var Table = document.getElementById("table");
+
+      var click = document.getElementById("c1");
+      console.log(click);
+
+      function countdown() {
+        if (timeLeft === 0) {
+          document.getElementById("timer").innerHTML = "Time over : 00:00";
+          document.getElementById("c1").removeEventListener("click", clickfunc);
+        } else {
+          document.getElementById("timer").innerHTML = "Time  : 00:" + timeLeft;
+          timeLeft--;
+        }
+      }
+      function start() {
+        document
+          .getElementsByTagName("td")
+          [color_td_index].setAttribute("class", "c1");
+        document
+          .getElementsByTagName("td")
+          [color_td_index].setAttribute("id", "c1");
+        document
+          .getElementsByTagName("td")
+          [color_td_index].addEventListener("click", clickfunc);
+        setInterval(countdown, 1000);
+        setTimeout(() => {
+          alert("Game Over Your score is :" + score);
+        }, 31000);
+      }
+
+      const incriment = () => {
+        document.getElementById("c1").removeEventListener("click", clickfunc);
+        document.getElementById("c1").removeAttribute("class");
+        document.getElementById("c1").removeAttribute("id");
+        // console.log(color_td_index);
+        let row = document.createElement("tr");
+        for (let i = 0; i < count; i++) {
+          let col = document.createElement("td");
+          row.appendChild(col);
+        }
+        document.getElementById("table").appendChild(row);
+        for (let i = 0; i < count + 1; i++) {
+          let col = document.createElement("td");
+          let row = document.getElementsByTagName("tr")[i].appendChild(col);
+        }
+        count = count + 1;
+        // console.log(count);
+      };
+
+      const change_color = (random) => {
+        let col_change = document.getElementsByTagName("td")[random];
+        col_change.setAttribute("class", "c1");
+        col_change.setAttribute("id", "c1");
+        document.getElementById("c1").addEventListener("click", clickfunc);
+        console.log(col_change);
+        let color = [
+          "red",
+          "green",
+          "gray",
+          "yellow",
+          "white",
+          "black",
+          "#FOF8FF",
+          "#FAEBD7",
+          "#00FFFF",
+          "#FOFFFF",
+          "#7FFFDF",
+          "#FFE4C4",
+          "#556B2F",
+          "#666",
+          "#666633",
+          "#CC00CC",
+          "#6666FF",
+          "#66FFCC",
+        ];
+        let table = document.getElementsByTagName("table");
+        let td = table[0].getElementsByTagName("td");
+        // console.log(td);
+        for (let i = 0; i < td.length; i++) {
+          if (i === random) {
+            td[i].style.backgroundColor = color[random % 3];
+            td[i].style.opacity = 0.5;
+          } else {
+            td[i].style.backgroundColor = color[random % 3];
+            td[i].style.opacity = 1;
+          }
+        }
+      };
+
+      const clickfunc = () => {
+        if (score < 17) {
+          incriment();
+          let total_row = count * count - 1;
+          // console.log(total_row);
+          let rand = Math.random() * 10;
+          let random = Math.floor(rand);
+          // console.log(random);
+          if (total_row < 10) {
+            if (random > total_row) {
+              random = random - total_row;
+            }
+            random = total_row - random;
+          } else if (total_row >= 10 && total_row <= 100) {
+            random = total_row - random;
+          } else {
+            let random2 = random * random;
+            //   console.log(random2);
+            if (random2 < 50) {
+              random = total_row - random2 + 50;
+            }
+            random = total_row - random2;
+          }
+          // console.log(random);
+          color_td_index = random;
+          change_color(random);
+          score = score + 1;
+          if (score == 17) {
+            alert("Game Over!!! You Got Highest Score : " + score);
+            document.getElementById("score").innerHTML =
+              "Got Highest Score : " + score;
+            // document.getElementById("timer").innerHTML = "Time  : 00:00";
+            timeLeft = 0;
+          } else {
+            document.getElementById("score").innerHTML =
+              "YOUR SCORE : " + score;
+          }
+        }
+      };
+
+      click.addEventListener("click", clickfunc);
+    </script>
+  </body>
+</html>

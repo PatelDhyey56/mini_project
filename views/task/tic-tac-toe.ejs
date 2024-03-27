@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic Tac Toe</title>
+  </head>
+  <style>
+    * {
+      margin: 0%;
+      padding: 0%;
+      background-color: aliceblue;
+    }
+    body {
+      margin: 2%;
+    }
+    table {
+      margin: auto;
+      width: 30%;
+      height: 200px;
+    }
+    table,
+    tr,
+    td {
+      padding: 1%;
+      border: 2px solid black;
+      border-collapse: collapse;
+    }
+    td {
+      font-size: 50px;
+      padding: 10px;
+      height: 100px;
+      width: 280px;
+      text-align: center;
+    }
+    #declare {
+      height: 50px;
+      margin: 2%;
+    }
+    .reset {
+      color: white;
+      background-color: black;
+      height: 50px;
+      width: 100px;
+      border-radius: 2000px;
+      visibility: hidden;
+    }
+  </style>
+  <body>
+    <center>
+      <h2>PATEL DHYEY</h2>
+      <h2>24DEV054</h2>
+    </center>
+    <div>
+      <h2>
+        <b>
+          <center style="margin: 10px">Tic Tac Toe</center>
+        </b>
+      </h2>
+    </div>
+    <table>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+    <div>
+      <center>
+        <b>
+          <h3 id="declare"></h3>
+        </b>
+        <input
+          id="reset"
+          type="reset"
+          onclick="window.location.reload();"
+          value="Reset"
+          class="reset"
+        />
+      </center>
+    </div>
+    <script>
+      const td = document.querySelectorAll("td");
+      let turn = 0;
+      const changeturn = () => {
+        if (turn === 0) {
+          turn = "X";
+        } else {
+          turn = 0;
+        }
+      };
+      const checkwin = () => {
+        let wincase = [
+          [0, 1, 2],
+          [3, 4, 5],
+          [6, 7, 8],
+          [0, 3, 6],
+          [1, 4, 7],
+          [2, 5, 8],
+          [0, 4, 8],
+          [2, 4, 6],
+        ];
+        wincase.forEach((e) => {
+          if (
+            td[e[0]].innerText === td[e[1]].innerText &&
+            td[e[1]].innerText === td[e[2]].innerText &&
+            td[e[0]].innerText !== ""
+          ) {
+            document.getElementById("declare").innerText =
+              td[e[0]].innerText + "  win.....";
+            alert(td[e[0]].innerText + "  win.....");
+            // console.log(document.getElementById("reset"));
+            document.getElementById("reset").style.visibility = "visible";
+          }
+        });
+      };
+      td.forEach((e) => {
+        // console.log(e.innerText);
+        e.addEventListener("click", () => {
+          if (e.innerHTML == "") {
+            e.innerText = turn;
+            changeturn();
+          }
+          console.log(e);
+          checkwin();
+        });
+      });
+    </script>
+  </body>
+</html>
