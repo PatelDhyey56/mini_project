@@ -56,7 +56,7 @@ const deletedata = (code) => {
     let password = await con.sqlfunc(pass);
     console.log(password);
     if (password.length != 0) {
-      if (password[0].password == null) {
+      if (password[0].password === null) {
         let sql1 = `delete from login where token="${code}" `;
         await con.sqlfunc(sql1);
         console.log("data deleted...");
