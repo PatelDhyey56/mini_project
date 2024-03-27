@@ -1,4 +1,4 @@
-var con = require("../database");
+var con = require("../services/database");
 var md5 = require("md5");
 
 const getlogin = (req, res) => {

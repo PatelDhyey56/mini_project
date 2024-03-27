@@ -10,8 +10,12 @@ const {
   postrequest,
   add_passs,
 } = require("../controllers/register");
+var middleware = require("../auth/register_middleware");
 
-router.route("/register").get(getrequest).post(postrequest);
+router
+  .route("/register")
+  .get(getrequest)
+  .post(middleware.formvalidator, postrequest);
 
 router.route("/register/pass").post(add_passs);
 

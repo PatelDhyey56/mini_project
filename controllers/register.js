@@ -1,5 +1,5 @@
-var con = require("../database");
-var middleware = require("../middleware");
+var con = require("../services/database");
+var middleware = require("../auth/register_middleware");
 var md5 = require("md5");
 
 const getrequest = async (req, res) => {

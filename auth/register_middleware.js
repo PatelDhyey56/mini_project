@@ -1,11 +1,9 @@
-var con = require("./database");
-var validator = require("./validators");
+var con = require("../services/database");
 const formvalidator = (req, res, next) => {
   let formdata = req.body;
   let formtitles = Object.keys(formdata);
   let valid = true;
   let errortitle = "";
-
   let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
   for (let title of formtitles) {
@@ -56,7 +54,7 @@ const deletedata = (code) => {
     let password = await con.sqlfunc(pass);
     console.log(password);
     if (password.length != 0) {
-      if (password[0].password === null) {
+      if (password[0].user_password == null) {
         let sql1 = `delete from login where token="${code}" `;
         await con.sqlfunc(sql1);
         console.log("data deleted...");
