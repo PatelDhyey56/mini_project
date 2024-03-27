@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <style>
+      .center {
+        margin: 50px AUTO;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      }
+      table,
+      th,
+      td,
+      tr {
+        border: 2px solid black;
+        border-collapse: collapse;
+        text-align: center;
+      }
+      th {
+        background-color: #e0ccbe;
+      }
+      td {
+        background-color: #eeedeb;
+      }
+      .asc {
+        width: 50px;
+        font-size: 25px;
+        height: 50px;
+        background-color: black;
+        color: #e0ccbe;
+        border-radius: 20px;
+      }
+    </style> -->
+  </head>
+  <body>
+    <DIV class="table-responsive m-3">
+      <table class="table table-striped">
+        <tr>
+          <%fields.map(e=>{%>
+          <th onclick="changedata(this,'<%=e.name%>')">
+            <%=e.name%> <%if(order=="desc" && e.name == col){%>
+            <button class="btn btn-outline-dark w-fit">&#8593;</button>
+            <%}else if(order=="asc" && e.name == col){%>
+            <button class="btn btn-outline-dark w-fit">&#8595;</button>
+            <%}%>
+          </th>
+          <%})%>
+        </tr>
+        <%data.map(r=>{%>
+        <tr>
+          <%fields.map(e=>{%>
+          <td><%=r[e.name]%></td>
+          <%})%>
+        </tr>
+        <%})%>
+      </table>
+    </DIV>
+  </body>
+  <script>
+    const changedata = (e, name) => {
+      if (name == "<%=col%>") {
+        window.location = `http://localhost:8000/?sql=<%=sql%>&total_data=<%=
+        total_data%>&col1=${name}&page=1&order=asc`;
+        if ("<%=order%>" == "asc") {
+          window.location = `http://localhost:8000/?sql=<%=sql%>&total_data=<%=
+            total_data%>&page=1&col1=${name}&order=desc`;
+        }
+      } else {
+        window.location = `http://localhost:8000/?sql=<%=sql%>&total_data=<%=
+        total_data%>&page=1&col1=${name}&order=desc`;
+      }
+    };
+  </script>
+</html>

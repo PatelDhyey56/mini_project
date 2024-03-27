@@ -4,7 +4,7 @@ const {
   sorting,
   dynamic_table,
   event,
-} = require("../controllers/task");
+} = require("../controllers/js_task");
 
 var router = require("express").Router();
 

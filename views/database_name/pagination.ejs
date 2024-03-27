@@ -4,9 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <title>Document</title>
   </head>
   <body>
-    <%if(total_data>20){%>
+    <%if(total_data>15){%>
     <nav aria-label="Page navigation example">
       <ul class="pagination justify-content-center pagination-lg">
         <% if (page === 1) { %>
@@ -60,22 +61,16 @@
     <%}%>
     <script>
       const first_page = (page) => {
-        var searchParams = new URLSearchParams(window.location.search);
-        searchParams.set("page", page);
-        window.location =
-          window.location.pathname + "?" + searchParams.toString();
+        window.location = `http://localhost:8000/database-name?sql=<%=sql%>&total_data=<%=
+          total_data%>&col1=<%=col%>&order=<%=order%>&page=${page}`;
       };
       const last_page = (page) => {
-        var searchParams = new URLSearchParams(window.location.search);
-        searchParams.set("page", page);
-        window.location =
-          window.location.pathname + "?" + searchParams.toString();
+        window.location = `http://localhost:8000/database-name?sql=<%=sql%>&total_data=<%=
+          total_data%>&col1=<%=col%>&order=<%=order%>&page=${page}`;
       };
       const page_change = (page) => {
-        var searchParams = new URLSearchParams(window.location.search);
-        searchParams.set("page", page);
-        window.location =
-          window.location.pathname + "?" + searchParams.toString();
+        window.location = `http://localhost:8000/database-name?sql=<%=sql%>&total_data=<%=
+          total_data%>&col1=<%=col%>&order=<%=order%>&page=${page}`;
       };
     </script>
   </body>
