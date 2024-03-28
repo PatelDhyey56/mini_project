@@ -1,4 +1,5 @@
 var con = require("../services/database");
+var jwt = require("jsonwebtoken");
 var md5 = require("md5");
 
 const getlogin = (req, res) => {
@@ -19,8 +20,20 @@ const postlogin = async (req, res) => {
       let password = md5(code);
       // console.log(password);
       if (user[0].user_password == password) {
-        res.status(200).json({ msg: "Login sucessfull" });
         console.log("Login sucessfull...");
+        const token = jwt.sign(
+          { userId: data["form"].email },
+          "your-secret-key",
+          {
+            expiresIn: "1h",
+          }
+        );
+        // authentication()
+        // console.log(`token  : ${token}`);
+        res
+          .cookie("token", token)
+          .status(200)
+          .json({ token: token, msg: "Login sucessfull" });
       } else {
         res.status(404).json({ msg: "Invalid Credentials" });
       }

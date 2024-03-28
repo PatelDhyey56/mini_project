@@ -9,7 +9,7 @@ const getrequest = async (req, res) => {
       let sql = `select * from login where token="${token}" `;
       let data = await con.sqlfunc(sql);
       if (data.length != 0 && data[0]["user_password"] == null) {
-        console.log(data);
+        // console.log(data);
         res.render("registerpass", { token, mail: data[0].email });
       } else {
         res.render("error_page");
@@ -22,7 +22,7 @@ const getrequest = async (req, res) => {
   }
 };
 const postrequest = (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   let data = req.body;
   try {
     let sql1 = `INSERT INTO login (f_name, l_name, email, mobile_no) VALUES ("${data.f_name}","${data.l_name}","${data.email}","${data.Mobile_no}")`;
@@ -68,9 +68,9 @@ const postrequest = (req, res) => {
 };
 
 const add_passs = async (req, res) => {
+  let data2 = Object.entries(req.body)[0][0];
   // console.log(req.body);
-  let data1 = Object.entries(req.body)[0][0];
-  let data = JSON.parse(data1);
+  let data = JSON.parse(data2);
   try {
     const key = Math.random().toString(36).substring(2, 6);
     // console.log(data.form["email"]);
