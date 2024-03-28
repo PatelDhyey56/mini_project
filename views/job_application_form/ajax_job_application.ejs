@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>job Application</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      .red {
+        width: 1000px;
+        height: 20px;
+        color: white;
+        background-color: red;
+        text-align: center;
+        margin: 20px auto;
+      }
+      .div-height {
+        height: 480px;
+      }
+    </style>
+  </head>
+  <body onload="city()">
+    <!-- <center>
+      <h2>PATEL DHYEY</h2>
+      <h2>24DEV054</h2>
+    </center> -->
+    <div id="error"></div>
+    <form name="myform" class="basic_detail" id="form">
+      <br/>
+      <h3 class="text-center">
+        <b><i> Job Application Form </i> </b>
+      </h3>
+      <div
+        id="basic_detail"
+        class="d-none d-flex justify-content-center div-height"
+      >
+      <fieldset>
+        <legend>Basic Details</legend>
+        <div id="error"></div>
+        <label for="f_name">Frist name* :</label>
+        <input type="text" name="f_name" id="f_name" tabindex="1"
+        <%if(result===true){%> value="<%=resultdata1.F_NAME%>" <%}%>/>
+        <label for="l_name">Last name* :</label>
+        <input type="text" name="l_name" id="l_name" tabindex="2"
+        <%if(result===true){%> value="<%=resultdata1.L_NAME%>" <%}%>/><br /><br />
+        <label for="designation">Designation :</label>
+        <input type="text" name="designation" id="designation" /><br /><br />
+        <label for="email">Email* :</label>
+        <input type="text" name="email" id="email" tabindex="3"
+        placeholder="abc@xyz.com" minlength="10" <%if(result===true){%>
+        value="<%=resultdata1.EMAIL%>" <%}%> />
+        <label for="Mobile_no">Mobile_no* :</label>
+        <input type="tel" name="Mobile_no" id="Mobile_no" tabindex="4"
+        length="10" <%if(result===true){%> value="<%=resultdata1.PHONE_NO%>"
+        <%}%> /><br /><br />
+        <label for="address">Address* :</label>
+        <input type="text" name="address" id="address" tabindex="5"
+        <%if(result===true){%> value="<%=resultdata1.ADDRESS_1%>" <%}%> /><br /><br />
+        <label for="state">State :</label>
+        <select name="state" class="btn btn-dark" id="state" onchange="changestate(this.value)"></select>
+        <label for="city">City :</label>
+        <select class="btn btn-dark" name="city" id="city"></select>
+        <br /><br />
+        <label for="zip_code">City Zip code* :</label>
+        <input type="text" name="zip_code" id="zip_code" tabindex="6"
+        <%if(result===true){%> value="<%=resultdata1.CITY_CODE%>" <%}%> /><br /><br/>
+        <p id="gender">
+          Gender : <input type="radio" name="gender"
+          id="male" value="male"  <%if(result===true){%><%if(resultdata1.GENDER
+          =="male"){%>checked="checked" <%}%><%}%>/>
+          <label for="male">Male</label>
+          <input type="radio" name="gender" id="female" value="female"
+          <%if(result===true){%><%if(resultdata1.GENDER
+          =="male"){%>checked="checked" <%}%><%}%> />
+          <label for="female">Female</label>
+        </p>
+        <label for="Relationship">Relationship :</label>
+        <select class="btn btn-dark" name="relationship" id="relationship">
+          <option  value="single"<%if(result===true){%> <%if(resultdata1.RELATIONSHIP=="single"){%><%}%><%}%>>Single</option>
+          <option value="married" <%if(result===true){%> <%if(resultdata1.RELATIONSHIP=="single"){%><%}%><%}%>>Married</option></select><br /><br />
+        <label for="dob">Date Of Birth* :</label>
+        <input type="text" name="dob" id="dob" tabindex="7"
+        placeholder="YYYY-MM-DD" <%if(result===true){%>
+        value="<%=resultdata1.DOB%>" <%}%> /><br />
+        <br />
+      </fieldset>
+      </div>
+      <div
+        id="education"
+        class="d-none d-flex justify-content-center div-height"
+      >
+      <fieldset>
+        <legend>EDUCATION</legend>
+        <h5>SSC RESULT</h5>
+        <label for="name_of_bord_ssc">Name of Bord :</label>
+        <input type="text" name="name_of_bord_ssc" id="name_of_bord_ssc"
+        id="dob" tabindex="7"  <%if(result===true){%>
+        value="<%=resultdata2[0].BORD_NAME%>" <%}%> />
+        <label for="passing_year_ssc">Passing Year :</label>
+        <input type="text" name="passing_year_ssc" id="passing_year_ssc"
+        placeholder="YYYY" length="4" <%if(result===true){%>
+        value="<%=resultdata2[0].PASS_YEAR%>" <%}%> />
+        <label for="Percentage_ssc">Percentage:</label>
+        <input type="text" name="Percentage_ssc" id="Percentage_ssc"
+        <%if(result===true){%> value="<%=resultdata2[0].PERCENTAGE%>" <%}%>
+        /><br /><br />
+        <h5>HSC RESULT</h5>
+        <label for="name_of_bord_hsc">Name of Bord :</label>
+        <input type="text" name="name_of_bord_hsc" id="name_of_bord_hsc"
+        <%if(result===true){%> value="<%=resultdata2[1].EDUCATION_TYPE%>"
+        <%}%>/>
+        <label for="passing_year_hsc">Passing Year :</label>
+        <input type="text" name="passing_year_hsc" id="passing_year_hsc"
+        placeholder="YYYY" length="4" <%if(result===true){%>
+        value="<%=resultdata2[1].PASS_YEAR%>" <%}%> />
+        <label for="Percentage_hsc">Percentage:</label>
+        <input type="text" name="Percentage_hsc" id="Percentage_hsc"
+        <%if(result===true){%> value="<%=resultdata2[1].PERCENTAGE%>" <%}%>
+        /><br /><br />
+        <h5>BACHLAR RESULT</h5>
+        <label for="name_of_bord_bachlar">Name of Bord :</label>
+        <input type="text" name="name_of_bord_bachlar" id="name_of_bord_bachlar"
+        <%if(result===true){%> value="<%=resultdata2[2].BORD_NAME%>" <%}%> />
+        <label for="passing_year_bachlar">Passing Year :</label>
+        <input type="text" name="passing_year_bachlar" id="passing_year_bachlar"
+        placeholder="YYYY" length="4" <%if(result===true){%>
+        value="<%=resultdata2[2].PASS_YEAR%>" <%}%> />
+        <label for="Percentage_bachlar">Percentage:</label>
+        <input type="text" name="Percentage_bachlar" id="Percentage_bachlar"
+        <%if(result===true){%> value="<%=resultdata2[2].PERCENTAGE%>" <%}%>
+        /><br /><br />
+        <h5>MASTER RESULT</h5>
+        <label for="name_of_bord_master">Name of Bord :</label>
+        <input type="text" name="name_of_bord_master" id="name_of_bord_master"
+        <%if(result===true){%> value="<%=resultdata2[3].BORD_NAME%>" <%}%> />
+        <label for="passing_year_master">Passing Year :</label>
+        <input type="text" name="passing_year_master" id="passing_year_master"
+        placeholder="YYYY" length="4" <%if(result===true){%>
+        value="<%=resultdata2[3].PASS_YEAR%>" <%}%> />
+        <label for="Percentage_master">Percentage:</label>
+        <input type="text" name="Percentage_master" id="Percentage_master"
+        <%if(result===true){%> value="<%=resultdata2[1].PERCENTAGE%>" <%}%>
+        /><br /><br />
+
+        <br /><br />
+      </fieldset>
+      </div>
+      <div
+        id="work_exp"
+        class="d-none d-flex justify-content-center div-height"
+      >
+        <fieldset id="workexp">
+          <div class="d-flex">
+            <legend>WORK EXPERERIENCE</legend>
+            <p id="workadd" class="btn btn-dark mx-2" onclick="addworkexp()">
+              +
+            </p>
+            <p id="workadd" class="btn btn-dark mx-2" onclick="removeworkexp()">
+              -
+            </p>
+          </div>
+          <br />
+          <%if(result===true){%>
+            <%if(resultdata4.length==0){%>
+              <div id="companydiv">
+            <label for="company_name">Conpany Name:</label>
+            <input type="text" name="company_name" id="company_name1" />
+            <label for="company_name">Designation:</label>
+            <input type="text" name="company_name" id="designation1" />
+            <label for="company_name">From Date:</label>
+            <input
+              type="text"
+              name="company_name"
+              id="from_date1"
+              placeholder="YYYY-MM-DD"
+            />
+            <label for="company_name">To Date:</label>
+            <input
+              type="text"
+              name="company_name"
+              id="to_date1"
+              placeholder="YYYY-MM-DD"
+            /><br /><br />
+          </div><%}%>
+            <%resultdata3.map((e)=>{%>
+              <div id="companydiv">
+              <label for="company_name">Conpany Name:</label>
+              <input type="text" name="company_name" id="company_name1"
+        value="<%=e.COMPANY_NAME%>" 
+       />
+        <label for="company_name">Designation:</label>
+        <input type="text" name="company_name" id="designation1"
+        value="<%=e.DESIGNATION%>"  />
+        <label for="company_name">From Date:</label>
+        <input type="text" name="company_name" id="from_date1"
+        placeholder="YYYY-MM-DD"
+        value="<%=e.FORM%>"  />
+        <label for="company_name">To Date:</label>
+        <input type="text" name="company_name" id="to_date1"
+        placeholder="YYYY-MM-DD" 
+        value="<%=e.TO_DATE%>"/><br /><br />
+        </div>
+        <%})%>
+        <%}else{%>
+          <div id="companydiv">
+            <label for="company_name">Conpany Name:</label>
+            <input type="text" name="company_name" id="company_name1" />
+            <label for="company_name">Designation:</label>
+            <input type="text" name="company_name" id="designation1" />
+            <label for="company_name">From Date:</label>
+            <input
+              type="text"
+              name="company_name"
+              id="from_date1"
+              placeholder="YYYY-MM-DD"
+            />
+            <label for="company_name">To Date:</label>
+            <input
+              type="text"
+              name="company_name"
+              id="to_date1"
+              placeholder="YYYY-MM-DD"
+            /><br /><br />
+          </div><%}%>
+        </fieldset>
+      </div>
+      <div
+        id="language"
+        class="d-none d-flex justify-content-center align-items-center div-height"
+      >
+      <fieldset>
+              <legend>LANGUAGE KNOWN</legend>
+              <br />
+              <p>
+                <input type="checkbox" name="gujrati" id="gujrati"
+                <%if(result===true){%><%resultdata6.map((e)=>{%>
+                <%if(e.LANGUAGE_NAME=="gujrati" ){%> checked="checked"
+                <%}%><%})%><%}%>/>
+                <label for="gujrati">GUJRATI :</label>
+                <input type="checkbox" name="GUJRATI" id="gujrati1" value="read"
+                checked="checked"
+                <%if(result===true){%><%resultdata6.map((e)=>{%>
+                <%if(e.LANGUAGE_NAME=="gujrati" && e.LAVEL_EXPERIENCE=="read"
+                ){%>checked="checked"<%}%><%})%><%}%> />
+                <label for="GUJRATI">Read</label>
+                <input type="checkbox" name="GUJRATI" id="gujrati2"
+                value="write" <%if(result===true){%> <%resultdata6.map((e)=>{%>
+                <%if(e.LANGUAGE_NAME=="gujrati" && e.LAVEL_EXPERIENCE=="write"
+                ){%> checked="checked" <%}%><%})%><%}%> />
+                <label for="GUJRATI">Write</label>
+                <input type="checkbox" name="GUJRATI" id="gujrati3"
+                value="Speak" <%if(result===true){%> <%resultdata6.map((e)=>{%>
+                <%if(e.LANGUAGE_NAME=="gujrati" && e.LAVEL_EXPERIENCE=="speak"
+                ){%> checked="checked" <%}%><%})%> <%}%>/>
+                <label for="gujrati3">Speak</label>
+              </p>
+              <br /><br />
+
+              <p>
+                <input type="checkbox" name="hindi" id="hindi"
+                <%if(result===true){%><%resultdata6.map((e)=>{%>
+                <%if(e.LANGUAGE_NAME=="hindi" ){%> checked="checked"
+                <%}%><%})%><%}%>/>
+                <label for="hindi">HINDI :</label>
+                <input type="checkbox" name="HINDI" id="hindi1" value="read"
+                <%if(result===true){%><%resultdata6.map((e)=>{%>
+                <%if(e.LANGUAGE_NAME=="hindi" && e.LAVEL_EXPERIENCE=="read" ){%>
+                checked="checked" <%}%><%})%><%}%>/>
+                <label for="hindi1">Read</label>
+                <input type="checkbox" name="HINDI" id="hindi2" value="write"
+                <%if(result===true){%><%resultdata6.map((e)=>{%>
+                <%if(e.LANGUAGE_NAME=="hindi" && e.LAVEL_EXPERIENCE=="write"
+                ){%> checked="checked" <%}%><%})%><%}%> />
+                <label for="hindi2">Write</label>
+                <input type="checkbox" name="HINDI" id="hindi3" value="speak"
+                <%if(result===true){%><%resultdata6.map((e)=>{%>
+                <%if(e.LANGUAGE_NAME=="hindi" && e.LAVEL_EXPERIENCE=="speak"
+                ){%> checked="checked" <%}%><%})%><%}%> />
+                <label for="hindi3">Speak</label>
+              </p>
+              <br /><br />
+
+              <p>
+                <input type="checkbox" name="english" id="english"
+                <%if(result===true){%><%resultdata6.map((e)=>{%>
+                <%if(e.LANGUAGE_NAME=="english" ){%> checked="checked"
+                <%}%><%})%> <%}%>/>
+                <label for="english">ENGLISH :</label>
+                <input type="checkbox" name="ENGLISH" id="english1" value="read"
+                <%if(result===true){%><%resultdata6.map((e)=>{%>
+                <%if(e.LANGUAGE_NAME=="english" && e.LAVEL_EXPERIENCE=="read"
+                ){%> checked="checked" <%}%><%})%><%}%> />
+                <label for="english1">Read</label>
+                <input type="checkbox" name="ENGLISH" id="english2"
+                value="write" <%if(result===true){%><%resultdata6.map((e)=>{%>
+                <%if(e.LANGUAGE_NAME=="english" && e.LAVEL_EXPERIENCE=="write"
+                ){%> checked="checked" <%}%><%})%><%}%> />
+                <label for="english2">Write</label>
+                <input type="checkbox" name="ENGLISH" id="english3"
+                value="speak" <%if(result===true){%><%resultdata6.map((e)=>{%>
+                <%if(e.LANGUAGE_NAME=="english" && e.LAVEL_EXPERIENCE=="speak"
+                ){%> checked="checked" <%}%><%})%><%}%> />
+                <label for="english3">Speak</label>
+              </p>
+            </fieldset>
+      </div>
+      <div
+        id="technology"
+        class="d-none d-flex justify-content-center align-items-center div-height"
+      >
+          <fieldset>
+              <legend>TECHNOLOGY KNOWN</legend>
+              <br />
+              <p>
+                <input type="checkbox" name="c++" id="C++"
+                <%if(result===true){%><%resultdata7.map((e)=>{%>
+                <%if(e.TECHNOLOGY_NAME=="c++" ){%> checked="checked" <%}%><%})%>
+                <%}%>/>
+                <label for="C++">C++ :</label>
+                <input type="radio" name="C++" id="C++1" value="beginer"
+                <%if(result===true){%><%resultdata7.map((e)=>{%>
+                <%if(e.TECHNOLOGY_NAME=="c++" && e.LAVEL_EXPERIENCE=="beginer"
+                ){%> checked="checked" <%}%><%})%><%}%> />
+                <label for="C++1">BEGINER</label>
+                <input type="radio" name="C++" id="C++2" value="mideator"
+                <%if(result===true){%><%resultdata7.map((e)=>{%>
+                <%if(e.TECHNOLOGY_NAME=="c++" && e.LAVEL_EXPERIENCE=="mideator"
+                ){%> checked="checked" <%}%><%})%><%}%>/>
+                <label for="C++2">MIDEATOR</label>
+                <input type="radio" name="C++" id="C++3" value="expert"
+                <%if(result===true){%> <%resultdata7.map((e)=>{%>
+                <%if(e.TECHNOLOGY_NAME=="c++" && e.LAVEL_EXPERIENCE=="expert"
+                ){%> checked="checked" <%}%><%})%><%}%>/>
+                <label for="C++3">EXPEERT</label>
+              </p>
+              <br /><br />
+              <p>
+                <input type="checkbox" name="c#" id="C#"
+                <%if(result===true){%><%resultdata7.map((e)=>{%>
+                <%if(e.TECHNOLOGY_NAME=="c#" ){%> checked="checked"
+                <%}%><%})%><%}%> />
+                <label for="C#">C# :</label>
+                <input type="radio" name="C#" id="C#1" value="beginer"
+                <%if(result===true){%><%resultdata7.map((e)=>{%>
+                <%if(e.TECHNOLOGY_NAME=="c#" && e.LAVEL_EXPERIENCE=="beginer"
+                ){%> checked="checked" <%}%><%})%><%}%>/>
+                <label for="C#1">BEGINER</label>
+                <input type="radio" name="C#" id="C#2" value="mideator"
+                <%if(result===true){%><%resultdata7.map((e)=>{%>
+                <%if(e.TECHNOLOGY_NAME=="c#" && e.LAVEL_EXPERIENCE=="mideator"
+                ){%> checked="checked" <%}%><%})%><%}%> />
+                <label for="C#2">MIDEATOR</label>
+                <input type="radio" name="C#" id="C#3" value="expert"
+                <%if(result===true){%><%resultdata7.map((e)=>{%>
+                <%if(e.TECHNOLOGY_NAME=="c#" && e.LAVEL_EXPERIENCE=="expert"
+                ){%> checked="checked" <%}%><%})%><%}%>/>
+                <label for="C#3">EXPEERT</label>
+              </p>
+              <br /><br />
+              <p>
+                <input type="checkbox" name="java" id="JAVA"
+                <%if(result===true){%><%resultdata7.map((e)=>{%>
+                <%if(e.TECHNOLOGY_NAME=="java" ){%> checked="checked"
+                <%}%><%})%> <%}%>/>
+                <label for="JAVA">JAVA :</label>
+                <input type="radio" name="JAVA" id="JAVA1" value="beginer"
+                <%if(result===true){%><%resultdata7.map((e)=>{%>
+                <%if(e.TECHNOLOGY_NAME=="java" && e.LAVEL_EXPERIENCE=="beginer"
+                ){%> checked="checked" <%}%><%})%><%}%>/>
+                <label for="JAVA1">BEGINER</label>
+                <input type="radio" name="JAVA" id="JAVA2" value="mideator"
+                <%if(result===true){%><%resultdata7.map((e)=>{%>
+                <%if(e.TECHNOLOGY_NAME=="java" && e.LAVEL_EXPERIENCE=="mideator"
+                ){%> checked="checked" <%}%><%})%><%}%>/>
+                <label for="JAVA2">MIDEATOR</label>
+                <input type="radio" name="JAVA" id="JAVA3" value="expert"
+                <%if(result===true){%><%resultdata7.map((e)=>{%>
+                <%if(e.TECHNOLOGY_NAME=="java" && e.LAVEL_EXPERIENCE=="expert"
+                ){%> checked="checked" <%}%><%})%><%}%>/>
+                <label for="JAVA3">EXPEERT</label>
+              </p>
+            </fieldset>
+      </div>
+      <div
+        id="referance"
+        class="d-none d-flex justify-content-center align-items-center div-height"
+      >
+        <fieldset id="refercon">
+          <div class="d-flex">
+            <legend>REFERANCE CONTECT</legend>
+            <p class="btn btn-dark mx-2" onclick="addrefer()">+</p>
+            <p class="btn btn-dark mx-2" onclick="removerefer()">-</p>
+          </div>
+          <%if(result===true){%>
+          <%if(resultdata4.length==0){%>
+            <div id="referdiv">
+                <label for="contect_name">Contect Name:</label>
+                <input type="text" name="contect_name" id="contect_name1" />
+                <label for="contect_name">Contect no:</label>
+                <input type="text" name="contect_name" id="contect_no1" />
+                <label for="contect_name">Contect Relation:</label>
+                <input
+                type="text"
+                name="contect_name"
+                id="contect_relation1"
+                /><br /><br />
+                </div><%}%>
+            <%resultdata4.map((e)=>{%>
+              <div id="referdiv">
+                <label for="contect_name">Contect Name:</label>
+        <input type="text" name="contect_name" id="contect_name1"
+        value="<%=e.NAME_OF_PERSON%>" />
+        <label for="contect_name">Contect no:</label>
+        <input type="text" name="contect_name" id="contect_no1"
+        value="<%=e.CONTECT_NO%>" />
+        <label for="contect_name">Contect Relation:</label>
+        <input type="text" name="contect_name" id="contect_relation1"
+        value="<%=e.RELATION%>"/><br /><br />
+                </div>
+             <%})%>
+             <%}else{%>
+              <div id="referdiv">
+                <label for="contect_name">Contect Name:</label>
+                <input type="text" name="contect_name" id="contect_name1" />
+                <label for="contect_name">Contect no:</label>
+                <input type="text" name="contect_name" id="contect_no1" />
+                <label for="contect_name">Contect Relation:</label>
+                <input
+                type="text"
+                name="contect_name"
+                id="contect_relation1"
+                /><br /><br />
+                </div>
+                <%}%>
+                </fieldset>
+      </div>
+      <div
+        id="preference"
+        class="d-none d-flex justify-content-center div-height"
+      >
+      <fieldset >
+        <legend>PREFERENCES</legend>
+        <label for="current_ctc">Current CTC* :</label>
+        <input type="text" name="current_ctc" id="Current_ctc" tabindex="8"
+        <%if(result===true){%> value="<%=resultdata5.CURRENT_CTC%>" <%}%>/>        <br /><br />
+        <label for="prefer_locations">Prefer Location* :</label>
+        <input list="prefer_locations" name="prefer_locations" id="Location"
+        placeholder="Ahamedabad" tabindex="9" <%if(result===true){%>
+        value="<%=resultdata5.LOCATION_NAME%>" <%}%> />
+        <datalist id="prefer_locations">
+          <option value="Ahamedabad"></option>
+          <option value="Rajkot"></option>
+          <option value="Mumbai"></option>
+          <option value="Goa"></option>
+        </datalist>
+        <br /><br />
+        <label for="Department">Department* :</label>
+        <select name="Department"  class="btn btn-dark" id="Department" tabindex="10">
+          <optgroup label="Designer">
+            <option value="Web-Designer"<%if(result===true){%> <%if(resultdata1.RELATIONSHIP=="single"){%><%}%><%}%>>Web-Designer</option>
+            <option value="App-Designer"<%if(result===true){%> <%if(resultdata1.RELATIONSHIP=="single"){%><%}%><%}%>>App-Designer</option>
+          </optgroup>
+          <optgroup label="Developer">
+            <option value="Front-end Developer"<%if(result===true){%> <%if(resultdata1.RELATIONSHIP=="single"){%><%}%><%}%>>Front-end Developer</option>
+            <option value="Back-end Developer"<%if(result===true){%> <%if(resultdata1.RELATIONSHIP=="single"){%><%}%><%}%>>Back-end Developer</option>
+          </optgroup>
+          <option value="Marketing">Marketing</option>
+        </select>
+        <br /><br />
+        <label for="expected_ctc">Expected CTC* :</label>
+        <input type="text" name="expected_ctc" id="Expected_ctc" tabindex="11"
+        <%if(result===true){%> value="<%=resultdata5.EXPECTED_CTC%>" <%}%> />        <br /><br />
+        <label for="notice_time">Notice Time:</label>
+        <input type="text" name="notice_time" id="notice_time"
+        <%if(result===true){%> value="<%=resultdata5.NOTICE_TIME%>" <%}%> />
+        <br /><br />
+      
+        <div class="submit">
+          <input
+          type="button"
+          class="btn btn-dark"
+          value="Submit"
+          <%if(result===true){%> 
+            onclick="submitdata('<%=result%>','<%=id%>')"
+            <%}else{%>
+              onclick="submitdata('<%=result%>')"
+              <%}%>
+          />
+          </div>
+          </fieldset>
+
+      </div>
+      <p id="pre" class="btn btn-dark mx-5" onclick="pre()"><-PRE</p>
+      <p id="next" class="btn btn-dark float-end mx-5" onclick="next()">
+        NEXT->
+      </p>
+    </form>
+    <script src="job_application/ajax.js">
+</script>
+  </body>
+</html>
