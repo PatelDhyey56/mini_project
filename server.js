@@ -1,14 +1,17 @@
 var express = require("express");
 var app = express();
+
 const { router } = require("./routers/router");
+const { port } = require("./config");
+
 const cookieParser = require("cookie-parser");
-app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+
 app.set("view engine", "ejs");
 app.use(express.static("views"));
 app.use(express.static("public"));
-app.use(cookieParser());
-
-var PORT = 8000;
+app.use(express.urlencoded({ extended: true }));
+var PORT = port || 8000;
 
 app.listen(PORT, () => {
   try {

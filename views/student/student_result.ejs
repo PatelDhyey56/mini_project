@@ -15,6 +15,7 @@
       body,
       table {
         margin: 50px 10px;
+        width: 98vw;
       }
       table,
       tr,
@@ -53,9 +54,11 @@
       }
       th {
         background-color: #88ab8e;
+        width: 9px;
       }
       tr {
         background-color: #eee7da;
+        font-size: 12px;
       }
     </style>
   </head>
@@ -108,16 +111,16 @@
     </ul>
     <script>
       const first_page = (page) => {
-        window.location = `http://localhost:8000/result?page=${page}`;
+        window.location = `http://localhost:8000/Student/result?page=${page}`;
       };
       const last_page = (page) => {
-        window.location = `http://localhost:8000/result?page=${page}`;
+        window.location = `http://localhost:8000/Student/result?page=${page}`;
       };
       const page_change = (page) => {
         if (page < 1 || page > "<%=last_page%>") {
           return 0;
         }
-        window.location = `http://localhost:8000/result?page=${page}`;
+        window.location = `http://localhost:8000/Student/result?page=${page}`;
       };
       const Student_details = (id, total) => {
         window.location = `http://localhost:8000/student/result/report/${id}/${total}`;

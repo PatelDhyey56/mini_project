@@ -1,6 +1,7 @@
 var con = require("../services/database");
 var jwt = require("jsonwebtoken");
 var md5 = require("md5");
+const { seret_key } = require("../config");
 
 const getlogin = (req, res) => {
   res.render("login");
@@ -21,13 +22,9 @@ const postlogin = async (req, res) => {
       // console.log(password);
       if (user[0].user_password == password) {
         console.log("Login sucessfull...");
-        const token = jwt.sign(
-          { userId: data["form"].email },
-          "your-secret-key",
-          {
-            expiresIn: "1h",
-          }
-        );
+        const token = jwt.sign({ userId: data["form"].email }, seret_key, {
+          expiresIn: "1h",
+        });
         // authentication()
         // console.log(`token  : ${token}`);
         res

@@ -1,0 +1,328 @@
+:root{
+    --site_bgcolor:#F9F7EE;
+    --btn_color:#000000;
+    --card_bg:#EBE9DE;
+    --verybigfont:50px;
+    --bigfont:40px;
+    --mediamfont:28px;
+    --smallfont:20px;
+    --verysmallfont:15px;
+}
+.verybigfont{
+    font-size: var(--verybigfont);
+}
+.bigfont{
+    font-size: var(--bigfont);
+}
+.mediamfont{
+    font-size: var(--mediamfont);
+}
+.smallfont{
+    font-size: var(--smallfont);
+}
+.verysmallfont{
+    font-size: var(--verysmallfont);
+}
+p{
+    font-size: 20px; 
+}
+.border-radius{
+    border-radius: 20px;
+}
+.border2px{
+    border: 2px solid black;
+}
+.text-align-center{
+    text-align: center;
+}
+.padding20{
+    padding: 20px;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+.content-center{
+    display: flex;
+    justify-content: center;
+}
+body{
+    background-color: var(--site_bgcolor);
+}
+nav{
+    padding: 20px 50px;
+    width:calc(100vw - 100px);
+    display: flex;
+    background-color:var(--site_bgcolor);
+}
+.d-flex{
+    display: flex;
+}
+.d-flex2{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin: 0 -10px 0 0 ;
+}
+.d-flex2 .card-flex{
+    width: calc(100%/2 - 30px);
+}
+.nav-div{
+    padding-left: 400px;
+}
+nav ul {
+    list-style-type: none;
+    background-color:var(--site_bgcolor) ;
+}
+nav ul li {
+    float: left;
+    padding: 2px 0;
+}
+  
+nav ul  li a {
+    margin: 4PX 2px;
+    padding: 10px 16px;
+    display: block;
+    color: #183B56;
+    text-align: center;
+    text-decoration: none;
+}
+  
+li a:hover {
+    display: block;
+    border-radius: 5px;
+    background-color: var(--btn_color);
+    color: #FFFFFF;
+}
+.btn-nav {
+    border-radius: 5px;
+    background-color: var(--btn_color);
+    color: #FFFFFF;
+}
+.btn-nav:hover {
+    display: block;
+    height: 15px;
+    color: #183B56; 
+    border: 2px solid #183B56;
+    background-color: var(--site_bgcolor);
+    border-radius: 5px;
+}
+.section{
+    width: 1140px;
+    margin: 0 auto;
+    padding: 50px 80px 30px 80px; 
+    background-color: var(--site_bgcolor);
+    display: flex;
+    justify-content: center;
+}
+.home-btn{
+    box-shadow: 4px 0 black;
+    font-size: var(--smallfont);
+    width: 200px;
+    height: 53px;   
+    border-radius: 5px;
+    background-color: #FFBB38;
+}
+.home-btn:hover{
+    background-color: #FC7F3A;
+}
+.home-con1{
+    width: 500px;
+    height: 500px;
+    padding:20px 0;
+}
+.home-con2{
+    width: 500px;
+    height: 370px;
+    padding:50px 50px;
+    position: relative;
+    font-size: 35px;
+}
+.home-orange{
+    z-index: 1;
+    position: absolute;
+    top: -30px;
+    right: 60px;
+    height:200px;
+    width: 200px;
+    text-align: center;
+    border-radius: 100%;
+    background-color: #FC7F3A;
+}
+.home-yellow{
+    position: absolute;
+    top: 110px;
+    right: 140px;
+    height:210px;
+    width: 210px;
+    text-align: center;
+    /* border-radius: 0px, 129px, 129px, 0px; */
+    border-bottom-right-radius: 50%;
+    border-top-right-radius: 50%;
+    background-color: #FFBB38;
+}
+.home-green{
+    font-size: var(--bigfont);
+    color: #FFFFFF;
+    z-index: 1;
+    position: absolute;
+    top: 260px;
+    right: 300px;
+    height:200px;
+    width: 200px;
+    text-align: center;
+    background-color: #389B48;
+}
+.section2{
+    padding: 20px 0;
+    width: 100vw;
+    height: 90px;
+    color: white;
+    background-color: #000000; 
+}
+.card-section1{
+    width: auto;
+    display: grid;
+    grid-template-columns:33.33% 33.33% 33.33%;
+    gap: 10px;
+    margin: 0 0 0 -10px;
+}
+.card1{
+    height: 400px;
+    padding: 15px;
+    background-color: var(--card_bg);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    border-radius: 20px;
+}
+.card1 div img{
+    height:200px;
+    width: 200px;
+}
+.card1 button{
+    width: 200px;
+    height: 50px;
+    border-radius: 10px;
+    font-size: var(--verysmallfont);
+    background-color: #FFBB38;
+    box-shadow: 3px 3px black;
+}
+
+.img-under-texts h5{
+    margin: 10px 0;
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 3px;
+    width: 100px;
+}
+.img-under-texts h4{
+    padding: 10px 0;
+    font-size: var(--smallfont);
+}
+.img-under-texts p{
+    font-size: 15px; 
+    padding: 10px 0;
+}
+.img-under-texts h6{
+    font-size: var(--smallfont);   
+    width: 150px;
+    padding: 5px;
+    border-bottom: 2px solid black;
+}
+.card-section2{
+    width: 100%;
+    display: grid;
+    grid-template-columns:33.33% 33.33% 33.33%;
+    gap: 15px;
+    margin: 0 15px 0 -15px;
+}
+.card2{
+    height: 520px;      
+    width: calc(33.33% -35px);
+    padding: 15px;
+    background-color: var(--card_bg);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+    align-items: center;
+    border-radius: 20px;
+    transition: transform 0.3s;
+}
+.card2 div p{
+    font-size: var(--verysmallfont);
+    text-align: start;
+    margin: 20px 0;
+}
+.card2 button{
+    font-size: var(--verysmallfont);
+    width: 175px;
+    height: 50px;
+    background-color: #FFBB38;
+    border-radius: 10px;
+    box-shadow: 3px 3px black;
+}
+.card2:hover{
+    color: #FFFFFF;
+    background-color: #000000;
+    transform: scale(1.05);
+}
+.img-btn{
+    position: absolute;
+    bottom: -15px;
+    left: 90px;
+    display: flex;
+    align-items: center;
+    font-size: var(--verysmallfont);
+    width: 200px;
+    height: 55px;
+    padding-left: 40px;
+    border: 2px solid black;
+    border-radius: 50px;
+    background-color: #FFBB38;
+}
+.img-btn-arrow{
+    margin: 0 10px;
+    padding: 10px;
+    width:15px;
+    height: 15px;
+    border-radius: 100%;
+    background-color:#389B48;
+}
+.input-contect-text{
+    height: 40px;
+    width: 500px;
+    padding: 5px 10px;
+    margin: 10px 0;
+    background: #ffc80a;
+    border-top: 5px solid #ffc80a;
+    border-left: 5px solid #ffc80a;
+    border-right: 5px solid #ffc80a;
+    border-bottom: 1px solid black;
+}
+.contect-text{
+    width: 510px;
+    margin: 10px 0;
+    font-size: var(--smallfont);
+    padding: 10px;
+    margin: 5px 0;
+    border-bottom: 1px solid black;
+}
+footer{
+    padding: 50px 100px 30px 100px; 
+    background-color: var(--site_bgcolor);
+}
+.footer-lists{
+    margin: 10px 30px;
+    width: 200px;
+}
+.footer-lists ul{
+    list-style-type: none;
+}
+.footer-lists ul li{
+    margin: 20px 0;
+    font-size: var(--smallfont);
+}

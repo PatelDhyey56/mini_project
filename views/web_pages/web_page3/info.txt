@@ -1,0 +1,13 @@
+Orange : #FC7F3A
+TOMATO: #FC6868
+YELLOW : #FFBB38
+YELLOW2 : #FFC80A
+GREEN : #389B48
+GREEN2: #64E379
+BLACK : #000000
+WHITE : #FFFFFF
+SITE B.G : #F9F7EE
+CARD B.G : #EBE9DE
+
+
+https://www.figma.com/file/SweT7iHr3PQmJ6DdBVHVWu/DEMO?type=design&node-id=1142%3A27&mode=design&t=VyP71h7nmZVuLM3B-1

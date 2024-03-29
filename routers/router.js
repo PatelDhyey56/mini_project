@@ -7,6 +7,7 @@ var normal_search = require("./normal_search");
 var student = require("./student");
 var orderBy = require("./orderBy");
 var job_application = require("./normal_job_application");
+var web_pages = require("./web_pages");
 var ajax_job_application = require("./ajax_job_application");
 var api_search = require("./api_search");
 
@@ -32,6 +33,8 @@ router.use("/job-application", token_check, job_application);
 router.use("/ajax-job-application", token_check, ajax_job_application);
 
 router.use("/api-search", token_check, api_search);
+
+router.use("/web-pages", token_check, web_pages);
 
 router.get("/", token_check, (req, res) => {
   res.render("home");

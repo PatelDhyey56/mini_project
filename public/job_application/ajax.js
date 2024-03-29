@@ -532,7 +532,7 @@ const submitdata = async (value, id) => {
   }
 };
 
-const city = async () => {
+const show_city = async () => {
   const state = await fetch(
     "http://localhost:8000/ajax-job-application/state/state"
   )

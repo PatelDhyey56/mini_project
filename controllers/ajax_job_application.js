@@ -154,13 +154,13 @@ const getid_ajex = async (req, res) => {
         });
       });
     };
-    let sql = `SELECT * FROM job_application_form_07_march.JOB_APPLICATION_FORM where INDEX_NO =${id};`;
-    let sql2 = `SELECT * FROM job_application_form_07_march.EDUCATION where INDEX_NO =${id}`;
-    let sql3 = `SELECT * FROM job_application_form_07_march.WORK_EXPERIENCE where INDEX_NO =${id}`;
-    let sql4 = `SELECT * FROM job_application_form_07_march.REFERANCE_CONTACT where INDEX_NO =${id}`;
-    let sql5 = `SELECT * FROM job_application_form_07_march.PREFERANCES where INDEX_NO =${id}`;
-    let sql6 = `SELECT * FROM job_application_form_07_march.KNOWN_LANGUAGE where INDEX_NO =${id}`;
-    let sql7 = `SELECT * FROM job_application_form_07_march.KNOWN_TECHNOLOGIES where INDEX_NO =${id}`;
+    let sql = `SELECT * FROM JOB_APPLICATION_FORM where INDEX_NO =${id};`;
+    let sql2 = `SELECT * FROM EDUCATION where INDEX_NO =${id}`;
+    let sql3 = `SELECT * FROM WORK_EXPERIENCE where INDEX_NO =${id}`;
+    let sql4 = `SELECT * FROM REFERANCE_CONTACT where INDEX_NO =${id}`;
+    let sql5 = `SELECT * FROM PREFERANCES where INDEX_NO =${id}`;
+    let sql6 = `SELECT * FROM KNOWN_LANGUAGE where INDEX_NO =${id}`;
+    let sql7 = `SELECT * FROM KNOWN_TECHNOLOGIES where INDEX_NO =${id}`;
     var obj = {
       data1: await sqlrun(sql),
       data2: await sqlrun(sql2),
@@ -188,7 +188,7 @@ const getid_ajex = async (req, res) => {
       res.send("<h1>Enter valid id...</h1>");
     }
   } catch (e) {
-    res.send("<h1>Data recived...</h1>");
+    res.render("error_page");
     console.log(e);
   }
 };
@@ -313,12 +313,12 @@ const postid_ajex = (req, res) => {
       res.send("<h1>Data Updated...</h1>");
     }
   } catch (e) {
-    res.send("<h1>Data recived...</h1>");
+    res.render("error_page");
     console.log(e);
   }
 };
 const getstate = (req, res) => {
-  let sql1 = `SELECT * FROM job_application_form_07_march.all_states;`;
+  let sql1 = `SELECT * FROM all_states;`;
   con.con.query(sql1, function (err, result, fields) {
     let errordata = false;
     if (err) {
@@ -331,7 +331,7 @@ const getstate = (req, res) => {
   });
 };
 const getcity = (req, res) => {
-  let sql1 = `SELECT * FROM job_application_form_07_march.all_cities;`;
+  let sql1 = `SELECT * FROM all_cities;`;
   con.con.query(sql1, function (err, result, fields) {
     let errordata = false;
     if (err) {
@@ -344,7 +344,7 @@ const getcity = (req, res) => {
   });
 };
 const getcity_by_state = (req, res) => {
-  let sql1 = ` SELECT state_code FROM job_application_form_07_march.all_states where state_name="${req.params.state}"`;
+  let sql1 = ` SELECT state_code FROM all_states where state_name="${req.params.state}"`;
   con.con.query(sql1, function (err, result, fields) {
     let errordata = false;
     if (err) {
@@ -352,7 +352,7 @@ const getcity_by_state = (req, res) => {
       // console.log(err);
     } else {
       let state = Number(result[0].state_code);
-      let sql2 = `SELECT * FROM job_application_form_07_march.all_cities where state_code=${state};`;
+      let sql2 = `SELECT * FROM all_cities where state_code=${state};`;
       con.con.query(sql2, function (err, result1, fields) {
         let errordata = false;
         if (err) {

@@ -46,7 +46,7 @@ router.get("/result", (req, res) => {
       } else {
         var query = require("url").parse(req.url, true).query;
         let page = Number(query.page) || 1;
-        let data = query.data || 100;
+        let data = query.data || 20;
         var last_page = Math.ceil(result[0].total_row / data);
 
         if (page <= last_page) {

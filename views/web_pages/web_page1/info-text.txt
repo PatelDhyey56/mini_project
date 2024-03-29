@@ -1,0 +1,10 @@
+DARK #183B56
+WHITE #FFFFFF
+BLUE #1565D8
+LIGHT BLUE #F3F7FD
+GREEN #36B37E
+GRAY #5A7184
+FOOTER BG #0D2436
+
+
+https://www.figma.com/file/SweT7iHr3PQmJ6DdBVHVWu/DEMO?type=design&node-id=2%3A2414&mode=design&t=nIuYF94o8TxhZwnE-1

@@ -1,0 +1,7 @@
+DARK #0A2259
+BLUE #6A88B6
+LIGHT BLUE #F0F6FF
+ORANGE #F2A33A
+TEXT GRAY #AAAAAA
+
+https://www.figma.com/file/SweT7iHr3PQmJ6DdBVHVWu/DEMO?type=design&node-id=0-1&mode=design

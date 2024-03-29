@@ -406,14 +406,19 @@
         <label for="Department">Department* :</label>
         <select name="Department" id="Department" tabindex="10">
           <optgroup label="Designer">
-            <option value="Web-Designer"<%if(result===true){%> <%if(resultdata1.RELATIONSHIP=="single"){%><%}%><%}%>>Web-Designer</option>
-            <option value="App-Designer"<%if(result===true){%> <%if(resultdata1.RELATIONSHIP=="single"){%><%}%><%}%>>App-Designer</option>
-          </optgroup>
-          <optgroup label="Developer">
-            <option value="Front-end Developer"<%if(result===true){%> <%if(resultdata1.RELATIONSHIP=="single"){%><%}%><%}%>>Front-end Developer</option>
-            <option value="Back-end Developer"<%if(result===true){%> <%if(resultdata1.RELATIONSHIP=="single"){%><%}%><%}%>>Back-end Developer</option>
-          </optgroup>
-          <option value="Marketing">Marketing</option>
+              <option value="Web-Designer" <%if(result===true){%><%if(resultdata5.DEPARTMENT
+            =="Web-Designer"){%>selected <%}%><%}%> >Web-Designer</option>
+              <option value="App-Designer" <%if(result===true){%><%if(resultdata5.DEPARTMENT
+            =="App-Designer"){%>selected <%}%><%}%>>App-Designer</option>
+            </optgroup>
+            <optgroup label="Developer">
+              <option value="Front-end Developer" <%if(result===true){%><%if(resultdata5.DEPARTMENT
+            =="Front-end Developer"){%>selected <%}%><%}%>>Front-end Developer</option>
+              <option value="Back-end Developer"  <%if(result===true){%><%if(resultdata5.DEPARTMENT
+            =="Back-end Developer"){%>selected <%}%><%}%> >Back-end Developer</option>
+            </optgroup>
+            <option value="Marketing"  <%if(result===true){%><%if(resultdata5.DEPARTMENT
+            =="Marketing"){%>selected <%}%><%}%>>Marketing</option>
         </select>
         <br /><br />
         <label for="expected_ctc">Expected CTC* :</label>
@@ -429,7 +434,6 @@
       </fieldset>
     </form>
     <script src="job_application/normal.js">
-      
     </script>
   </body>
 </html>
