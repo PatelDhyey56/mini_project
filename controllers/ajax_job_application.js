@@ -188,7 +188,7 @@ const getid_ajex = async (req, res) => {
       res.send("<h1>Enter valid id...</h1>");
     }
   } catch (e) {
-    res.render("error_page");
+    // res.render("error_page");
     console.log(e);
   }
 };
@@ -313,59 +313,71 @@ const postid_ajex = (req, res) => {
       res.send("<h1>Data Updated...</h1>");
     }
   } catch (e) {
-    res.render("error_page");
+    // res.render("error_page");
     console.log(e);
   }
 };
 const getstate = (req, res) => {
   let sql1 = `SELECT * FROM all_states;`;
-  con.con.query(sql1, function (err, result, fields) {
-    let errordata = false;
-    if (err) {
-      errordata = true;
-      // console.log(err);
-    } else {
-      console.log(`state : ${result.length}`);
-      res.end(JSON.stringify(result));
-    }
-  });
+  try {
+    con.con.query(sql1, function (err, result, fields) {
+      let errordata = false;
+      if (err) {
+        errordata = true;
+        // console.log(err);
+      } else {
+        console.log(`state : ${result.length}`);
+        res.end(JSON.stringify(result));
+      }
+    });
+  } catch (e) {
+    console.log(e);
+  }
 };
 const getcity = (req, res) => {
   let sql1 = `SELECT * FROM all_cities;`;
-  con.con.query(sql1, function (err, result, fields) {
-    let errordata = false;
-    if (err) {
-      errordata = true;
-      // console.log(err);
-    } else {
-      console.log(`city : ${result.length}`);
-      res.end(JSON.stringify(result));
-    }
-  });
+  try {
+    con.con.query(sql1, function (err, result, fields) {
+      let errordata = false;
+      if (err) {
+        errordata = true;
+        // console.log(err);
+      } else {
+        console.log(`city : ${result.length}`);
+        res.end(JSON.stringify(result));
+      }
+    });
+  } catch (e) {
+    console.log(e);
+  }
 };
 const getcity_by_state = (req, res) => {
-  let sql1 = ` SELECT state_code FROM all_states where state_name="${req.params.state}"`;
-  con.con.query(sql1, function (err, result, fields) {
-    let errordata = false;
-    if (err) {
-      errordata = true;
-      // console.log(err);
-    } else {
-      let state = Number(result[0].state_code);
-      let sql2 = `SELECT * FROM all_cities where state_code=${state};`;
-      con.con.query(sql2, function (err, result1, fields) {
-        let errordata = false;
-        if (err) {
-          errordata = true;
-          // console.log(err);
-        } else {
-          // console.log(result1);
-          // console.log(result1.length);
-          res.end(JSON.stringify(result1));
-        }
-      });
-    }
-  });
+  try {
+    let sql1 = ` SELECT state_code FROM all_states where state_name="${req.params.state}"`;
+    con.con.query(sql1, function (err, result, fields) {
+      let errordata = false;
+      if (err) {
+        errordata = true;
+        // console.log(err);
+      } else {
+        let state = Number(result[0].state_code);
+        let sql2 = `SELECT * FROM all_cities where state_code=${state};`;
+        con.con.query(sql2, function (err, result1, fields) {
+          let errordata = false;
+          if (err) {
+            errordata = true;
+            // console.log(err);
+          } else {
+            // console.log(result1);
+            // console.log(result1.length);
+            res.end(JSON.stringify(result1));
+          }
+        });
+      }
+    });
+  } catch (e) {
+    console.log(e);
+  }
 };
 module.exports = {
   get_ajax_page,

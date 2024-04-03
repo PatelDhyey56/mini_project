@@ -17,169 +17,66 @@
     ></script>
   </head>
   <body>
+    <%- include("./nav.ejs")%>
     <div class="fs-1 d-flex justify-content-center text-center">Home</div>
     <div class="m-5">
-      <table class="table table-striped text-center">
-        <tr>
-          <th>task</th>
-          <th>Link</th>
-        </tr>
-        <tr>
-          <td>Table</td>
-          <td>
-            <a
-              href="/task/dynamic-table
-            "
-              >Dynamic-Table</a
-            >
-          </td>
-        </tr>
-        <tr>
-          <td>Sorting</td>
-          <td>
-            <a
-              href="/task/sorting
-            "
-              >Sorting</a
-            >
-          </td>
-        </tr>
-        <tr>
-          <td>Event</td>
-          <td>
-            <a
-              href="/task/event
-            "
-              >Events</a
-            >
-          </td>
-        </tr>
-        <tr>
-          <td>Tic tac toi</td>
-          <td>
-            <a
-              href="/task/tic-tac-toe
-            "
-              >Tic-tac-toe</a
-            >
-          </td>
-        </tr>
-        <tr>
-          <td>Cucu-cube</td>
-          <td>
-            <a
-              href="/task/cucu-cube
-            "
-              >Cucu-cube</a
-            >
-          </td>
-        </tr>
-        <tr>
-          <td>databse_name</td>
-          <td>
-            <a
-              href="/database-name
-            "
-              >Database</a
-            >
-          </td>
-        </tr>
-        <tr>
-          <td>Normal Search</td>
-          <td>
-            <a
-              href="/normal-search
-            "
-              >Normal Search</a
-            >
-          </td>
-        </tr>
-        <tr>
-          <td>Delimiter Search</td>
-          <td>
-            <a href="/delimiter-search">Delimiter Search</a>
-          </td>
-        </tr>
-        <tr>
-          <td rowspan="2">Student</td>
-          <td>
-            <a href="/Student">Student Attendance</a>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <a href="/Student/result">Student Result</a>
-          </td>
-        </tr>
-        <tr>
-          <td>Order By</td>
-          <td>
-            <a
-              href="/order
-            "
-              >Order By</a
-            >
-          </td>
-        </tr>
-        <tr>
-          <td>Job Application Form</td>
-          <td>
-            <a
-              href="/job-application
-            "
-              >Job Application Form</a
-            >
-          </td>
-        </tr>
-        <tr>
-          <td>AJAX Job Application Form</td>
-          <td>
-            <a
-              href="/ajax-job-application
-            "
+      <div class="container overflow-hidden text-center">
+        <div class="grid gap-3">
+          <div class="btn btn-outline-dark p-3 g-col-4 m-1" style="width: 30%">
+            <a class="nav-link" href="/task/dynamic-table">Dynamic-Table</a>
+          </div>
+          <div class="btn btn-outline-dark p-3 g-col-4 m-1" style="width: 30%">
+            <a class="nav-link" href="/task/sorting">Sorting</a>
+          </div>
+          <div class="btn btn-outline-dark p-3 g-col-4 m-1" style="width: 30%">
+            <a class="nav-link" href="/task/event">Events</a>
+          </div>
+          <div class="btn btn-outline-dark p-3 g-col-4 m-1" style="width: 30%">
+            <a class="nav-link" href="/task/tic-tac-toe">Tic-tac-toe</a>
+          </div>
+          <div class="btn btn-outline-dark p-3 g-col-4 m-1" style="width: 30%">
+            <a class="nav-link" href="/task/cucu-cube">Cucu-cube</a>
+          </div>
+          <div class="btn btn-outline-dark p-3 g-col-4 m-1" style="width: 30%">
+            <a class="nav-link" href="/database-name">Database</a>
+          </div>
+          <div class="btn btn-outline-dark p-3 g-col-4 m-1" style="width: 30%">
+            <a class="nav-link" href="/normal-search">Normal Search</a>
+          </div>
+          <div class="btn btn-outline-dark p-3 g-col-4 m-1" style="width: 30%">
+            <a class="nav-link" href="/delimiter-search">Delimiter Search</a>
+          </div>
+          <div class="btn btn-outline-dark p-3 g-col-4 m-1" style="width: 30%">
+            <a class="nav-link" href="/order">Order By</a>
+          </div>
+          <div class="btn btn-outline-dark p-3 g-col-4 m-1" style="width: 30%">
+            <a class="nav-link" href="/Student">Student Attendance</a>
+          </div>
+          <div class="btn btn-outline-dark p-3 g-col-4 m-1" style="width: 30%">
+            <a class="nav-link" href="/Student/result">Student Result</a>
+          </div>
+          <div class="btn btn-outline-dark p-3 g-col-4 m-1" style="width: 30%">
+            <a class="nav-link" href="/api-search">Api</a>
+          </div>
+          <div class="btn btn-outline-dark p-3 g-col-4 m-1" style="width: 30%">
+            <a class="nav-link" href="/job-application">Job Application Form</a>
+          </div>
+          <div class="btn btn-outline-dark p-3 g-col-4 m-1" style="width: 30%">
+            <a class="nav-link" href="/ajax-job-application"
               >Ajax Job Application Form</a
             >
-          </td>
-        </tr>
-        <tr>
-          <td>Api search</td>
-          <td>
-            <a
-              href="/api-search
-            "
-              >Api</a
-            >
-          </td>
-        </tr>
-        <tr>
-          <td rowspan="3">Web PAGES</td>
-          <td>
-            <a
-              href="/web-pages/1
-            "
-              >Web page-1</a
-            >
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <a
-              href="/web-pages/2
-            "
-              >Web page-2</a
-            >
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <a
-              href="/web-pages/3
-            "
-              >Web page-3</a
-            >
-          </td>
-        </tr>
-      </table>
+          </div>
+          <div class="btn btn-outline-dark p-3 g-col-4 m-1" style="width: 30%">
+            <a class="nav-link" href="/web-pages/1">Web page-1</a>
+          </div>
+          <div class="btn btn-outline-dark p-3 g-col-4 m-1" style="width: 30%">
+            <a class="nav-link" href="/web-pages/2">Web page-2</a>
+          </div>
+          <div class="btn btn-outline-dark p-3 g-col-4 m-1" style="width: 30%">
+            <a class="nav-link" href="/web-pages/3">Web page-3</a>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>

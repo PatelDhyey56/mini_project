@@ -138,7 +138,7 @@ const post_jobapplication = (req, res) => {
       }
     });
   } catch (e) {
-    res.send("<h1>Data not recived...</h1>");
+    // res.send("<h1>Data not recived...</h1>");
     console.log(e);
   }
 };
@@ -189,7 +189,7 @@ const get_id = async (req, res) => {
       res.send("<h1>Enter valid id...</h1>");
     }
   } catch (e) {
-    res.send("<h1>Data recived...</h1>");
+    // res.send("<h1>Data recived...</h1>");
     console.log(e);
   }
 };
@@ -316,7 +316,7 @@ const post_id = (req, res) => {
       res.send("<h1>Data Updated...</h1>");
     }
   } catch (e) {
-    res.send("<h1>Data recived...</h1>");
+    // res.send("<h1>Data recived...</h1>");
     console.log(e);
   }
 };
