@@ -5,6 +5,7 @@ const {
   post_jobapplication,
   get_id,
   post_id,
+  get_alldata,
 } = require("../controllers/job_application");
 
 router

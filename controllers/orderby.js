@@ -1,7 +1,7 @@
 var con = require("../services/database");
 
 const getorderby = (req, res) => {
-  var query = require("url").parse(req.url, true).query;
+  let query = require("url").parse(req.url, true).query;
   try {
     if (!query.page) {
       res.render("search/orderby", { result: false });
@@ -34,12 +34,12 @@ const postorderby = (req, res) => {
 };
 
 function search_page(req, res, total_data, col1, sql) {
-  var query = require("url").parse(req.url, true).query;
+  let query = require("url").parse(req.url, true).query;
   let page = Number(query.page) || 1;
   let data = query.data || 50;
-  var last_page = Number(Math.ceil(total_data / data));
-  var col = query.col || col1;
-  var order = query.order || "";
+  let last_page = Number(Math.ceil(total_data / data));
+  let col = query.col || col1;
+  let order = query.order || "";
   try {
     if (page <= last_page) {
       let page_start_index = (page - 1) * data;

@@ -5,15 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-      ul {
+      .pagination {
         display: flex;
         justify-content: center;
         align-items: center;
         position: relative;
       }
-      li {
+      .pagination > ul {
+        display: flex;
+        flex-direction: row;
+      }
+      .pagination > ul > li {
         background-color: #c9d7dd;
-        height: 20px;
+        height: 50px;
         width: 80px;
         text-align: center;
         list-style-type: none;
@@ -23,22 +27,24 @@
     </style>
   </head>
   <body>
-    <ul>
-      <% if (page === 1) { %>
-      <li onclick="page_change('<%=page%>')"><%=page%></li>
-      <li id="pagemax" onclick="page_change('<%=page+1%>')"><%=page+1%></li>
-      <li onclick="last_page('<%=last_page%>')">>></li>
-      <% } else if (page == last_page) { %>
-      <li onclick="first_page('1')"><<</li>
-      <li id="pagemin" onclick="page_change('<%=page-1%>')"><%=page-1%></li>
-      <% } else { %>
-      <li onclick="first_page('1')"><<</li>
-      <li id="pagemin" onclick="page_change('<%=page-1%>')"><%=page-1%></li>
-      <li onclick="page_change('<%=page%>')"><%=page%></li>
-      <li id="pagemax" onclick="page_change('<%=page+1%>')"><%=page+1%></li>
-      <li onclick="last_page('<%=last_page%>')">>></li>
-      <% } %>
-    </ul>
+    <div class="pagination">
+      <ul>
+        <% if (page === 1) { %>
+        <li onclick="page_change('<%=page%>')"><%=page%></li>
+        <li id="pagemax" onclick="page_change('<%=page+1%>')"><%=page+1%></li>
+        <li onclick="last_page('<%=last_page%>')">>></li>
+        <% } else if (page == last_page) { %>
+        <li onclick="first_page('1')"><<</li>
+        <li id="pagemin" onclick="page_change('<%=page-1%>')"><%=page-1%></li>
+        <% } else { %>
+        <li onclick="first_page('1')"><<</li>
+        <li id="pagemin" onclick="page_change('<%=page-1%>')"><%=page-1%></li>
+        <li onclick="page_change('<%=page%>')"><%=page%></li>
+        <li id="pagemax" onclick="page_change('<%=page+1%>')"><%=page+1%></li>
+        <li onclick="last_page('<%=last_page%>')">>></li>
+        <% } %>
+      </ul>
+    </div>
     <script>
       const first_page = (page) => {
         window.location = `http://localhost:8000/order?sql=<%=sql%>&total_data=<%=

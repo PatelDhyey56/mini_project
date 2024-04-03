@@ -18,46 +18,42 @@
   </head>
   <body>
     <%- include('../nav.ejs'); %>
-    <div class="d-flex justify-content-center m-5">
-      <form method="get" action="/delimiter-search">
-        <input
-          style="width: 500px"
-          type="text"
-          name="search"
-          placeholder="Search ID"
-          id="sql"
-          value="<%=string%>"
-          index="1"
-          required
-        />
-        <input
-          type="submit"
-          value="Search"
-          class="btn btn-outline-dark btn-sm m-1"
-        />
-      </form>
-    </div>
+    <center>
+      <h2>ALL students</h2>
+    </center>
     <div class="m-5">
       <table class="table table-hover table-bordered table-striped">
         <tr>
-          <th>Student_ID</th>
-          <th>First name</th>
-          <th>Last name</th>
-          <th>Email</th>
-          <th>mobile no</th>
-          <th>City</th>
+          <th>INDEX_NO</th>
+          <th>F_NAME</th>
+          <th>L_NAME</th>
+          <th>GENDER</th>
+          <th>DOB</th>
+          <th></th>
+          <th></th>
         </tr>
+        <%data.map(r=>{%>
         <tr>
-          <td>_</td>
-          <td>^</td>
-          <td>$</td>
-          <td>{</td>
-          <td>}</td>
-          <td>:</td>
+          <td><%=r.INDEX_NO%></td>
+          <td><%=r.F_NAME%></td>
+          <td><%=r.L_NAME%></td>
+          <td><%=r.GENDER%></td>
+          <td><%=r.DOB%></td>
+          <td>
+            <a href="/job-application/<%=r.INDEX_NO%>" class="btn btn-dark"
+              >Update data Normal</a
+            >
+          </td>
+          <td>
+            <a
+              href="/ajax-job-application/id/<%=r.INDEX_NO%>"
+              class="btn btn-dark"
+              >Update data with ajax</a
+            >
+          </td>
         </tr>
+        <%})%>
       </table>
     </div>
-
-    <%- include('../dynamic-table.ejs'); %> <%- include('../pagination.ejs'); %>
   </body>
 </html>

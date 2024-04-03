@@ -1,11 +1,11 @@
 var con = require("../services/database");
 
 const getnormalsearch = (req, res) => {
-  var query = require("url").parse(req.url, true).query;
+  let query = require("url").parse(req.url, true).query;
   // console.log(query);
   let page = Number(query.page) || 1;
   let data = query.data || 20;
-  var search = {
+  let search = {
     id: query.id,
     first_name: query.first_name || "",
     last_name: query.last_name || "",
@@ -15,7 +15,7 @@ const getnormalsearch = (req, res) => {
   // console.log(query);
   try {
     let page_start_index = (page - 1) * data;
-    var sql = "select * from Student_master";
+    let sql = "select * from Student_master";
     if (search.id) {
       sql = sql.toString() + ` where Student_ID in(${search.id}) `;
     } else {
@@ -46,7 +46,7 @@ const getnormalsearch = (req, res) => {
         res.render("error_page");
       } else {
         let total_row = result1.length;
-        var last_page = Math.ceil(total_row / data);
+        let last_page = Math.ceil(total_row / data);
         if (page <= last_page) {
           let query2 =
             sql.toString() + ` limit ${data} offset ${page_start_index};`;

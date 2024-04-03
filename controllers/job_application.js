@@ -5,7 +5,7 @@ const get_jobapplication = (req, res) => {
 };
 
 const post_jobapplication = (req, res) => {
-  var data = req.body;
+  let data = req.body;
   //   console.log(req.body);
   try {
     let sql1 = `INSERT INTO JOB_APPLICATION_FORM (F_NAME, L_NAME, ADDRESS_1, EMAIL, PHONE_NO, CITY_NAME,CITY_CODE, GENDER, RELATIONSHIP, DOB,Designation) VALUES ("${data.f_name}","${data.l_name}", "${data.address}","${data.email}", "${data.Mobile_no}", "${data.city}", "${data.zip_code}", "${data.gender}", "${data.relationship}", "${data.dob}","${data.designation}");`;
@@ -162,7 +162,7 @@ const get_id = async (req, res) => {
     let sql5 = `SELECT * FROM PREFERANCES where INDEX_NO =${id}`;
     let sql6 = `SELECT * FROM KNOWN_LANGUAGE where INDEX_NO =${id}`;
     let sql7 = `SELECT * FROM KNOWN_TECHNOLOGIES where INDEX_NO =${id}`;
-    var obj = {
+    let obj = {
       data1: await sqlrun(sql),
       data2: await sqlrun(sql2),
       data3: await sqlrun(sql3),
@@ -320,4 +320,9 @@ const post_id = (req, res) => {
     console.log(e);
   }
 };
-module.exports = { get_jobapplication, post_jobapplication, get_id, post_id };
+module.exports = {
+  get_jobapplication,
+  post_jobapplication,
+  get_id,
+  post_id,
+};

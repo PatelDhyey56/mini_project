@@ -16,12 +16,12 @@
     </style>
   </head>
   <body>
+    <%- include('../nav.ejs'); %>
     <center>
       <h2>PATEL DHYEY</h2>
       <h2>24DEV054</h2>
     </center>
-
-    <form name="myform" class="basic_detail" id="form"    <%if(result==true){%> action="/job-application/update/<%=id%>" <%}else{%> action="/job-application"  <%}%> method="post">
+    <form name="myform" class="basic_detail m-5" id="form"    <%if(result==true){%> action="/job-application/update/<%=id%>" <%}else{%> action="/job-application"  <%}%> method="post">
 
       <h3>
         <b><i> Job Application Form </i> </b>
@@ -49,7 +49,7 @@
         <input type="text" name="address" id="address" tabindex="5"
         <%if(result===true){%> value="<%=resultdata1.ADDRESS_1%>" <%}%> /><br /><br />
         <label for="city">City :</label>
-        <select name="city" id="City" onchange="change(value)">
+        <select name="city" id="City" class="btn btn-dark" onchange="change(value)">
           <option value="Ahemedabad" <%if(result===true){ if(resultdata1.CITY_NAME=="Ahemedabad"){%>selected<%}%><%}%> >Ahamedabad</option>
           <option value="Gandhinagar" <%if(result===true){%> <%if(resultdata1.CITY_NAME=="Gandhinagar"){%>selected<%}%><%}%>>Gandhinagar</option>
           <option value="Surat" <%if(result===true){%> <%if(resultdata1.CITY_NAME=="Surat"){%>selected<%}%><%}%>>Surat</option>
@@ -58,7 +58,7 @@
         <br /><br />
         <label for="zip_code">City Zip code* :</label>
         <input type="text" name="zip_code" id="zip_code" tabindex="6"
-        <%if(result===true){%> value="<%=resultdata1.CITY_CODE%>" <%}%> /><br />
+        <%if(result===true){%> value="<%=resultdata1.CITY_CODE%>" <%}%> /><br /><br/>
         <p>
           Gender : <input type="radio" name="gender"
           id="male" value="male"  <%if(result===true){%><%if(resultdata1.GENDER
@@ -70,7 +70,7 @@
           <label for="female">Female</label>
         </p>
         <label for="Relationship">Relationship :</label>
-        <select name="relationship" id="relationship">
+        <select name="relationship" id="relationship" class="btn btn-dark">
           <option value="single"<%if(result===true){%> <%if(resultdata1.RELATIONSHIP=="single"){%><%}%><%}%>>Single</option>
           <option value="married" <%if(result===true){%> <%if(resultdata1.RELATIONSHIP=="single"){%><%}%><%}%>>Married</option></select><br /><br />
         <label for="dob">Date Of Birth* :</label>
@@ -189,7 +189,7 @@
         <label for="company_name3">To Date:</label>
         <input type="text" name="company_name3" id="to_date3"
         placeholder="YYYY-MM-DD" <%if(result===true){%><%if(resultdata3[2]){%>
-        value="<%=resultdata3[2].TO_DATE%>" <%}%><%}%> />
+        value="<%=resultdata3[2].TO_DATE%>" <%}%><%}%> /><br/><br/>
       </fieldset>
       <table>
         <tr>
@@ -404,7 +404,7 @@
         </datalist>
 
         <label for="Department">Department* :</label>
-        <select name="Department" id="Department" tabindex="10">
+        <select name="Department" class="btn btn-dark" id="Department" tabindex="10">
           <optgroup label="Designer">
               <option value="Web-Designer" <%if(result===true){%><%if(resultdata5.DEPARTMENT
             =="Web-Designer"){%>selected <%}%><%}%> >Web-Designer</option>
@@ -429,7 +429,7 @@
         <%if(result===true){%> value="<%=resultdata5.NOTICE_TIME%>" <%}%> />
         <br /><br />
         <div class="submit">
-          <input type="submit" value="Submit" />
+          <input type="submit" value="Submit" class="btn btn-dark"/>
         </div>
       </fieldset>
     </form>

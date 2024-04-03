@@ -30,22 +30,26 @@
         height: 50px;
         width: 200px;
       }
-      button {
+      .btn-result {
         color: black;
         background-color: #88ab8e;
         width: 100px;
         height: 20px;
         border-radius: 100px;
       }
-      ul {
+      .pagination {
         display: flex;
         justify-content: center;
         align-items: center;
         position: relative;
       }
-      li {
+      .pagination > ul {
+        display: flex;
+        flex-direction: row;
+      }
+      .pagination > ul > li {
         background-color: #c9d7dd;
-        height: 20px;
+        height: 50px;
         width: 80px;
         text-align: center;
         list-style-type: none;
@@ -63,7 +67,7 @@
     </style>
   </head>
   <body>
-    <%- include('../heder.ejs'); %>
+    <%- include('../nav.ejs'); %> <%- include('../heder.ejs'); %>
     <h2 class="text-center">ALL STUDENTS</h2>
     <table>
       <tr>
@@ -85,6 +89,7 @@
         <td><%=e.Total_marks%></td>
         <td>
           <button
+            class="btn-result"
             onclick="Student_details('<%=e.Student_ID%>','<%=e.Total_marks%>')"
           >
             Details
@@ -93,22 +98,24 @@
       </tr>
       <% }) %>
     </table>
-    <ul>
-      <% if (page === 1) { %>
-      <li onclick="page_change('<%=page%>')"><%=page%></li>
-      <li id="pagemax" onclick="page_change('<%=page+1%>')"><%=page+1%></li>
-      <li onclick="last_page('<%=last_page%>')">>></li>
-      <% } else if (page == last_page) { %>
-      <li onclick="first_page('1')"><<</li>
-      <li id="pagemin" onclick="page_change('<%=page-1%>')"><%=page-1%></li>
-      <% } else { %>
-      <li onclick="first_page('1')"><<</li>
-      <li id="pagemin" onclick="page_change('<%=page-1%>')"><%=page-1%></li>
-      <li onclick="page_change('<%=page%>')"><%=page%></li>
-      <li id="pagemax" onclick="page_change('<%=page+1%>')"><%=page+1%></li>
-      <li onclick="last_page('<%=last_page%>')">>></li>
-      <% } %>
-    </ul>
+    <div class="pagination">
+      <ul>
+        <% if (page === 1) { %>
+        <li onclick="page_change('<%=page%>')"><%=page%></li>
+        <li id="pagemax" onclick="page_change('<%=page+1%>')"><%=page+1%></li>
+        <li onclick="last_page('<%=last_page%>')">>></li>
+        <% } else if (page == last_page) { %>
+        <li onclick="first_page('1')"><<</li>
+        <li id="pagemin" onclick="page_change('<%=page-1%>')"><%=page-1%></li>
+        <% } else { %>
+        <li onclick="first_page('1')"><<</li>
+        <li id="pagemin" onclick="page_change('<%=page-1%>')"><%=page-1%></li>
+        <li onclick="page_change('<%=page%>')"><%=page%></li>
+        <li id="pagemax" onclick="page_change('<%=page+1%>')"><%=page+1%></li>
+        <li onclick="last_page('<%=last_page%>')">>></li>
+        <% } %>
+      </ul>
+    </div>
     <script>
       const first_page = (page) => {
         window.location = `http://localhost:8000/Student/result?page=${page}`;

@@ -8,11 +8,11 @@ const getstudent = (req, res) => {
         if (err) {
           res.render("error_page");
         } else {
-          var query = require("url").parse(req.url, true).query;
+          let query = require("url").parse(req.url, true).query;
           let page = Number(query.page) || 1;
           let data = query.data || 20;
           let month = query.month || 1;
-          var last_page = Math.ceil(result[0].total_row / data);
+          let last_page = Math.ceil(result[0].total_row / data);
           if (page <= last_page) {
             let page_start_index = (page - 1) * data;
             let query1 = `SELECT Student_master.Student_ID, First_name,Last_name, count(Student_master.Student_ID) as "PRESENT_DAYS" ,ROUND(COUNT(Student_master.Student_ID)/.3,2) AS "PERCENTAGE" FROM Student_master left join Attendance on Student_master.Student_ID=Attendance.Student_ID where Attendance.Month_ID=${month}  AND Attendance.Attendance="P" Group By Attendance.Student_ID  order By Attendance.Student_ID limit ${data} offset ${page_start_index};`;
@@ -48,10 +48,10 @@ const getresult = (req, res) => {
         if (err) {
           console.log("error in data");
         } else {
-          var query = require("url").parse(req.url, true).query;
+          let query = require("url").parse(req.url, true).query;
           let page = Number(query.page) || 1;
           let data = query.data || 20;
-          var last_page = Math.ceil(result[0].total_row / data);
+          let last_page = Math.ceil(result[0].total_row / data);
 
           if (page <= last_page) {
             let page_start_index = (page - 1) * data;

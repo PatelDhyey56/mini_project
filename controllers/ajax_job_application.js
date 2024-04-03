@@ -5,8 +5,31 @@ const get_ajax_page = (req, res) => {
     result: false,
   });
 };
+
+const get_alldata = (req, res) => {
+  try {
+    let sql1 = `SELECT * from JOB_APPLICATION_FORM`;
+    con.con.query(sql1, function (err, result, fields) {
+      let errordata = false;
+      if (err) {
+        errordata = true;
+        console.log(err);
+      } else {
+        // console.log(result);
+        res.render("job_application_form/allmembers.ejs", {
+          result: true,
+          data: result,
+          fields,
+        });
+      }
+    });
+  } catch (e) {
+    console.log(e);
+  }
+};
+
 const post_ajex_update = (req, res) => {
-  var data = req.body;
+  let data = req.body;
   console.log(req.body);
 
   try {
@@ -161,7 +184,7 @@ const getid_ajex = async (req, res) => {
     let sql5 = `SELECT * FROM PREFERANCES where INDEX_NO =${id}`;
     let sql6 = `SELECT * FROM KNOWN_LANGUAGE where INDEX_NO =${id}`;
     let sql7 = `SELECT * FROM KNOWN_TECHNOLOGIES where INDEX_NO =${id}`;
-    var obj = {
+    let obj = {
       data1: await sqlrun(sql),
       data2: await sqlrun(sql2),
       data3: await sqlrun(sql3),
@@ -387,4 +410,5 @@ module.exports = {
   getstate,
   getcity,
   getcity_by_state,
+  get_alldata,
 };
