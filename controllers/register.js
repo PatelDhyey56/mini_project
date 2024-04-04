@@ -23,42 +23,57 @@ const getrequest = async (req, res) => {
 };
 const postrequest = (req, res) => {
   // console.log(req.body);
-  let data = req.body;
+  // let data = req.body;
   try {
-    let sql1 = `INSERT INTO login (f_name, l_name, email, mobile_no) VALUES ("${data.f_name}","${data.l_name}","${data.email}","${data.Mobile_no}")`;
-    con.con.query(sql1, async function (err, result, fields) {
+    // console.log(req.body);
+    let data = req.body;
+    let sql = `select email from login where email ="${data.email}"`;
+    con.con.query(sql, async function (err, result1, fields) {
       let errordata = false;
       if (err) {
         errordata = true;
-        // console.log(err);
+        console.log(err);
       } else {
-        console.log(result.insertId);
-        console.log("data submit...");
-      }
-      if (errordata == true) {
-        res.status(400).json({ error: "User already Exist" });
-      } else {
-        const characters =
-          "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-        function link() {
-          let result = " ";
-          const charactersLength = characters.length;
-          for (let i = 0; i < 12; i++) {
-            result += characters.charAt(
-              Math.floor(Math.random() * charactersLength)
-            );
-          }
-          return result;
-        }
-        let code = link();
-        let sql2 = `update login set token="${code}" where email="${data.email}"`;
-        let token = await con.sqlfunc(sql2);
-        // console.log(token);
-        if (token.length != 0) {
-          res.status(200).json({ code: code });
-          middleware.deletedata(code);
+        if (result1.length == 0) {
+          let sql1 = `INSERT INTO login (f_name, l_name, email, mobile_no) VALUES ("${data.f_name}","${data.l_name}","${data.email}","${data.Mobile_no}")`;
+          con.con.query(sql1, async function (err, result, fields) {
+            let errordata = false;
+            if (err) {
+              errordata = true;
+              // console.log(err);
+            } else {
+              console.log(result.insertId);
+              console.log("data submit...");
+            }
+            if (errordata == true) {
+              res.status(400).json({ error: "Error" });
+            } else {
+              const characters =
+                "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+              function link() {
+                let result = " ";
+                const charactersLength = characters.length;
+                for (let i = 0; i < 12; i++) {
+                  result += characters.charAt(
+                    Math.floor(Math.random() * charactersLength)
+                  );
+                }
+                return result;
+              }
+              let code = link();
+              let sql2 = `update login set token="${code}" where email="${data.email}"`;
+              let token = await con.sqlfunc(sql2);
+              // console.log(token);
+              if (token.length != 0) {
+                res.status(200).json({ code: code });
+                middleware.deletedata(code);
+              } else {
+                res.status(404).json({ error: "ENTER VALID TOKEN" });
+              }
+            }
+          });
         } else {
-          res.status(404).json({ error: "ENTER VALID TOKEN" });
+          res.status(400).json({ error: "User already Exist" });
         }
       }
     });

@@ -40,6 +40,7 @@ const next = () => {
   obj.allpages[obj.page].classList.remove("d-none");
   // console.log(obj.page);
 };
+
 const validation_page = () => {
   if (obj.page == 0) {
     let valid = validationpage1();
@@ -107,6 +108,10 @@ const validationpage1 = () => {
     if (i == "dob") {
       break;
     }
+  }
+  for (let i of form_titles) {
+    basic_details[i] = basic_details[i].replaceAll(" ", "");
+    console.log(basic_details[i].replaceAll(" ", ""));
   }
   for (let title of form_titles) {
     if (!(title == "designation") && basic_details[title] == "") {
@@ -182,6 +187,10 @@ const validationpage2 = () => {
       break;
     }
   }
+  for (let i of form_titles) {
+    basic_details[i] = basic_details[i].replaceAll(" ", "");
+    console.log(basic_details[i].replaceAll(" ", ""));
+  }
   for (let title of form_titles) {
     if (!(title == "designation") && basic_details[title] == "") {
       errortitle = title;
@@ -250,6 +259,10 @@ const validationpage3 = () => {
       break;
     }
   }
+  for (let i of form_titles) {
+    basic_details[i] = basic_details[i].replaceAll(" ", "");
+    console.log(basic_details[i].replaceAll(" ", ""));
+  }
   for (let title of form_titles) {
     if (title == "company_name") {
       let ele = document.getElementsByName(title);
@@ -297,6 +310,10 @@ const validationpage4 = () => {
       break;
     }
   }
+  for (let i of form_titles) {
+    basic_details[i] = basic_details[i].replaceAll(" ", "");
+    console.log(basic_details[i].replaceAll(" ", ""));
+  }
   console.log(form_titles);
   for (let title of form_titles) {
     if (title == "gujrati" || title == "hindi" || title == "english") {
@@ -338,6 +355,10 @@ const validationpage5 = () => {
       break;
     }
   }
+  for (let i of form_titles) {
+    basic_details[i] = basic_details[i].replaceAll(" ", "");
+    console.log(basic_details[i].replaceAll(" ", ""));
+  }
   for (let title of form_titles) {
     if (title == "c++" || title == "c#" || title == "java") {
       let radio = title.toLocaleUpperCase();
@@ -368,6 +389,10 @@ const validationpage6 = () => {
     if (i == "contect_name") {
       break;
     }
+  }
+  for (let i of form_titles) {
+    basic_details[i] = basic_details[i].replaceAll(" ", "");
+    console.log(basic_details[i].replaceAll(" ", ""));
   }
   // console.log(form_titles);
   for (let title of form_titles) {
@@ -409,6 +434,10 @@ const validationpage7 = () => {
   let valid = true;
   for (let i in basic_details) {
     form_titles.push(i);
+  }
+  for (let i of form_titles) {
+    basic_details[i] = basic_details[i].replaceAll(" ", "");
+    console.log(basic_details[i].replaceAll(" ", ""));
   }
   for (let title of form_titles) {
     if (

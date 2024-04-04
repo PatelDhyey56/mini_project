@@ -21,8 +21,11 @@ document.getElementById("form").addEventListener("submit", (e) => {
       form_titles.push(i);
     }
   }
-
-  console.log(form_titles);
+  for (let i of form_titles) {
+    basic_details[i] = basic_details[i].replaceAll(" ", "");
+    // console.log(basic_details[i].replaceAll(" ", ""));
+  }
+  console.log(basic_details);
 
   const checkebox = (title) => {
     let button = title.toUpperCase();

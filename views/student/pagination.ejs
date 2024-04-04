@@ -32,6 +32,7 @@
         <% } else if (page == last_page) { %>
         <li onclick="first_page('1')"><<</li>
         <li id="pagemin" onclick="page_change('<%=page-1%>')"><%=page-1%></li>
+        <li onclick="page_change('<%=page%>')"><%=page%></li>
         <% } else { %>
         <li onclick="first_page('1')"><<</li>
         <li id="pagemin" onclick="page_change('<%=page-1%>')"><%=page-1%></li>
@@ -49,9 +50,7 @@
         window.location = `http://localhost:8000/student?page=${page}&month=${month}`;
       };
       const page_change = (page) => {
-        if (page < 1 || page > "<%=last_page%>") {
-          return 0;
-        }
+        console.log(page);
         window.location = `http://localhost:8000/student?page=${page}&month=${month}`;
       };
     </script>
