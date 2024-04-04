@@ -167,32 +167,42 @@
         document.getElementById("c1").addEventListener("click", clickfunc);
         console.log(col_change);
         let color = [
-          "red",
-          "green",
-          "gray",
-          "yellow",
-          "white",
-          "black",
+          "#A79277",
+          "#B3C8CF",
+          "#481E14",
+          "#9B3922",
+          "#C08B5C",
+          "#FA7070",
+          "#D1BB9E",
+          "#49243E",
+          "#BC7FCD",
           "#FOF8FF",
           "#FAEBD7",
           "#00FFFF",
           "#FOFFFF",
           "#7FFFDF",
           "#FFE4C4",
-          "#556B2F",
-          "#666",
-          "#666633",
-          "#CC00CC",
-          "#6666FF",
-          "#66FFCC",
+          "#76ABAE",
+          "#B0C5A4",
         ];
         let table = document.getElementsByTagName("table");
         let td = table[0].getElementsByTagName("td");
         // console.log(td);
         for (let i = 0; i < td.length; i++) {
           if (i === random) {
-            td[i].style.backgroundColor = color[random % 3];
-            td[i].style.opacity = 0.5;
+            if (score > 20) {
+              td[i].style.backgroundColor = color[random % 3];
+              td[i].style.opacity = 0.8;
+            } else if (score > 15) {
+              td[i].style.backgroundColor = color[random % 3];
+              td[i].style.opacity = 0.75;
+            } else if (score > 10) {
+              td[i].style.backgroundColor = color[random % 3];
+              td[i].style.opacity = 0.7;
+            } else {
+              td[i].style.backgroundColor = color[random % 3];
+              td[i].style.opacity = 0.6;
+            }
           } else {
             td[i].style.backgroundColor = color[random % 3];
             td[i].style.opacity = 1;

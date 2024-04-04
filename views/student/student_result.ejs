@@ -124,9 +124,6 @@
         window.location = `http://localhost:8000/Student/result?page=${page}`;
       };
       const page_change = (page) => {
-        if (page < 1 || page > "<%=last_page%>") {
-          return 0;
-        }
         window.location = `http://localhost:8000/Student/result?page=${page}`;
       };
       const Student_details = (id, total) => {

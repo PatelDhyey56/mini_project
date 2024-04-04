@@ -12,6 +12,7 @@ con.connect(function (err) {
   if (err) throw err;
   console.log("Data Base Connected!");
 });
+
 const sqlfunc = (sql) => {
   return new Promise((resolve, reject) => {
     con.query(sql, (err, result) => {
