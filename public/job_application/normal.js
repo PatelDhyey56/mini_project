@@ -4,6 +4,14 @@ const redalert = document.createElement("span");
 
 var valid = true;
 
+const error_message = (title) => {
+  let node = document.createElement("span");
+  node.classList.add("red-error");
+  let textnode = document.createTextNode(`Error in ${title}\n`);
+  node.appendChild(textnode);
+  document.getElementById(title).appendChild(node);
+};
+
 document.getElementById("form").addEventListener("submit", (e) => {
   let form_titles = [];
   let form = new FormData(e.target);
@@ -40,8 +48,9 @@ document.getElementById("form").addEventListener("submit", (e) => {
     }
     if (count == 0) {
       e.preventDefault();
-      errortitle = title;
-      valid = false;
+      error_message(title);
+      // errortitle = title;
+      // valid = false;
     }
   };
   const text_validator = (title) => {
@@ -58,20 +67,23 @@ document.getElementById("form").addEventListener("submit", (e) => {
       basic_details[title].includes("9")
     ) {
       e.preventDefault();
-      errortitle = title;
-      valid = false;
+      error_message(title);
+      // errortitle = title;
+      // valid = false;
     }
   };
   const num_validator = (title) => {
     if (isNaN(basic_details[title])) {
       e.preventDefault();
-      errortitle = title;
-      valid = false;
+      error_message(title);
+      // errortitle = title;
+      // valid = false;
     } else {
       if (title == "Mobile_no" && basic_details[title].length != 10) {
         e.preventDefault();
-        errortitle = title;
-        valid = false;
+        error_message(title);
+        // errortitle = title;
+        // valid = false;
       } else if (
         (title == "Percentage_ssc" &&
           !basic_details[title].match(Percentage)) ||
@@ -84,8 +96,9 @@ document.getElementById("form").addEventListener("submit", (e) => {
       ) {
         console.log(basic_details[title]);
         e.preventDefault();
-        errortitle = title;
-        valid = false;
+        error_message(title);
+        // errortitle = title;
+        // valid = false;
       } else if (
         (title == "passing_year_ssc" && basic_details[title].length != 4) ||
         (title == "passing_year_hsc" && basic_details[title].length != 4) ||
@@ -93,8 +106,9 @@ document.getElementById("form").addEventListener("submit", (e) => {
         (title == "passing_year_master" && basic_details[title].length != 4)
       ) {
         e.preventDefault();
-        errortitle = title;
-        valid = false;
+        error_message(title);
+        // errortitle = title;
+        // valid = false;
       }
     }
   };
@@ -114,8 +128,9 @@ document.getElementById("form").addEventListener("submit", (e) => {
           if (i == 2 || i == 3) {
             if (!ele[i].value.match(DATE)) {
               e.preventDefault();
-              errortitle = title;
-              valid = false;
+              error_message(title);
+              // errortitle = title;
+              // valid = false;
             }
           }
           buttonval.push(ele[i].value);
@@ -126,8 +141,9 @@ document.getElementById("form").addEventListener("submit", (e) => {
       if (buttonval.length == 0) {
       } else if (count < 4) {
         e.preventDefault();
-        errortitle = title;
-        valid = false;
+        error_message(title);
+        // errortitle = title;
+        // valid = false;
       }
     } else if (
       title == "contect_name1" ||
@@ -142,8 +158,9 @@ document.getElementById("form").addEventListener("submit", (e) => {
           if (i == 1) {
             if (ele[i].value.length != 10) {
               e.preventDefault();
-              errortitle = title;
-              valid = false;
+              error_message(title);
+              // errortitle = title;
+              // valid = false;
             }
           }
           buttonval.push(ele[i].value);
@@ -154,13 +171,15 @@ document.getElementById("form").addEventListener("submit", (e) => {
       if (count == 0) {
       } else if (count < 3) {
         e.preventDefault();
-        errortitle = title;
-        valid = false;
+        error_message(title);
+        // errortitle = title;
+        // valid = false;
       }
     } else if (basic_details[title] == "") {
       e.preventDefault();
-      errortitle = title;
-      valid = false;
+      error_message(title);
+      // errortitle = title;
+      // valid = false;
     } else if (
       title == "f_name" ||
       title == "l_name" ||
@@ -174,14 +193,16 @@ document.getElementById("form").addEventListener("submit", (e) => {
     } else if (title == "email") {
       if (!basic_details[title].match(mailformat)) {
         e.preventDefault();
+        error_message(title);
         errortitle = title;
         valid = false;
       }
     } else if (title == "dob") {
       if (!basic_details[title].match(DATE)) {
         e.preventDefault();
-        errortitle = title;
-        valid = false;
+        error_message(title);
+        // errortitle = title;
+        // valid = false;
       }
     } else if (
       title == "Mobile_no" ||
@@ -200,26 +221,40 @@ document.getElementById("form").addEventListener("submit", (e) => {
       num_validator(title);
       if (title == "Mobile_no" && basic_details[title].length != 10) {
         e.preventDefault();
-        errortitle = title;
-        valid = false;
+        error_message(title);
+        // errortitle = title;
+        // valid = false;
       }
     } else if (title == "gujrati" || title == "hindi" || title == "english") {
       checkebox(title);
+    } else if (title == "GUJRATI" || title == "HINDI" || title == "ENGLISH") {
+      let radio = title.toLowerCase();
+      if (!basic_details[radio]) {
+        e.preventDefault();
+        error_message(radio);
+        // errortitle = title;
+        // valid = false;
+      }
     } else if (title == "c++" || title == "c#" || title == "java") {
       let radio = title.toLocaleUpperCase();
       if (!basic_details[radio]) {
         e.preventDefault();
-        errortitle = title;
-        valid = false;
+        error_message(title);
+        // errortitle = title;
+        // valid = false;
       }
     } else if (title == "C++" || title == "C#" || title == "JAVA") {
       let radio = title.toLocaleLowerCase();
       if (!basic_details[radio]) {
         e.preventDefault();
-        errortitle = title;
-        valid = false;
+        error_message(radio);
+        // errortitle = title;
+        // valid = false;
       }
     } else if (title == "gender") {
+      if (basic_details[title].length == 0) {
+        error_message(title);
+      }
       console.log("hii");
     }
   });
