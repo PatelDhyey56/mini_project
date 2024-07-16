@@ -42,10 +42,15 @@
     <h3 class="text-center">Month : <%=month%></h3>
     <div style="margin: 20px">
       month:
-      <select name="order_by" id="order" class="btn btn-dark">
-        <option id="1" value="1" onclick="chenge_month(value)">Dec</option>
-        <option id="2" value="2" onclick="chenge_month(value)">Jan</option>
-        <option id="3" value="3" onclick="chenge_month(value)">Fab</option>
+      <select
+        name="order_by"
+        id="order"
+        class="btn btn-dark"
+        onchange="chenge_month(value)"
+      >
+        <option id="1" value="1">Dec</option>
+        <option id="2" value="2">Jan</option>
+        <option id="3" value="3">Fab</option>
       </select>
     </div>
     <table class="table table-striped text-center table-bordered m-5">

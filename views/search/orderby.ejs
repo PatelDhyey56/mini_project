@@ -22,7 +22,7 @@
       <input type="submit" value="Submit" />
     </form>
 
-    <% if(result == true) {%> <%- include('./table.ejs'); %> <%-
-    include('./pagination.ejs'); %> <%}%>
+    <% if(result == true) {%> <%- include('./table.ejs'); %> <%- total_data > 50
+    && include('./pagination.ejs'); %> <%}%>
   </body>
 </html>

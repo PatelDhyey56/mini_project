@@ -102,7 +102,7 @@ const getresultfinal = (req, res) => {
           sum(case when Exam.Exam_type_ID ="1" then Theory_marks else 0 end) as Terminal_Theory_marks ,
           sum(case when Exam.Exam_type_ID ="1" then Practical_marks else 0 end) as Terminal_Practical_marks ,
           sum(case when Exam.Exam_type_ID ="2" then Theory_marks else 0 end) as Prelims_Theory_marks ,
-          sum(case when Exam.Exam_type_ID  ="2" then Practical_marks else 0 end) as Prelims_Practical_marks ,
+          sum(case when Exam.Exam_type_ID ="2" then Practical_marks else 0 end) as Prelims_Practical_marks ,
           sum(case when Exam.Exam_type_ID ="3" then Theory_marks else 0 end) as Final_Theory_marks  ,
           sum(case when Exam.Exam_type_ID ="3" then Practical_marks else 0 end) as Final_Practical_marks ,
           sum(Practical_marks + Practical_marks ) as total_marks

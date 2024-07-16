@@ -214,27 +214,22 @@
         incriment();
         let total_row = count * count - 1;
         // console.log(total_row);
-        let rand = Math.random() * 10;
-        let random = Math.floor(rand);
+        let random = Math.floor(Math.random() * 10);
         // console.log(random);
-        if (total_row < 10) {
-          if (random > total_row) {
-            random = random - total_row;
-          }
-          random = total_row - random;
-        } else if (total_row >= 10 && total_row <= 100) {
-          random = total_row - random;
-        } else {
-          let random2 = random * random;
-          //   console.log(random2);
-          if (random2 < 50) {
-            random = total_row - random2 + 50;
-          }
-          random = total_row - random2;
-        }
+        color_td_index =
+          total_row < 10
+            ? random > total_row
+              ? random - total_row
+              : total_row - random
+            : total_row > 250
+            ? total_row - Math.floor(Math.random() * 100)
+            : total_row > 100
+            ? Math.floor(Math.random() * 100)
+            : total_row - random * random > 0
+            ? total_row - random * random
+            : random;
         // console.log(random);
-        color_td_index = random;
-        change_color(random);
+        change_color(color_td_index);
         score = score + 1;
         if (score >= Highest_score && timeLeft == 0) {
           alert("Game Over!!! You Got Highest Score : " + score);

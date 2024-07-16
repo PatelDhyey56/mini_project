@@ -112,8 +112,8 @@
         ];
         wincase.forEach((e) => {
           if (
+            td[e[0]].innerText === td[e[2]].innerText &&
             td[e[0]].innerText === td[e[1]].innerText &&
-            td[e[1]].innerText === td[e[2]].innerText &&
             td[e[0]].innerText !== ""
           ) {
             document.getElementById("declare").innerText =

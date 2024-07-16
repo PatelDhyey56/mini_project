@@ -20,25 +20,24 @@ let technology = obj.allpages.push(document.getElementById("technology"));
 let referance = obj.allpages.push(document.getElementById("referance"));
 let preference = obj.allpages.push(document.getElementById("preference"));
 obj.allpages[obj.page].classList.remove("d-none");
+obj.page === 0 && document.getElementById("pre").classList.add("d-none");
 
 const pre = () => {
-  if (obj.page == 0) {
-    return;
-  }
+  document.getElementById("next").classList.remove("d-none");
   obj.allpages[obj.page].classList.add("d-none");
   obj.page--;
   obj.allpages[obj.page].classList.remove("d-none");
+  obj.page === 0 && document.getElementById("pre").classList.add("d-none");
 };
 
 const next = () => {
-  if (obj.page == obj.allpages.length - 1) {
-    return;
-  }
+  document.getElementById("pre").classList.remove("d-none");
   validation_page();
   obj.allpages[obj.page].classList.add("d-none");
   obj.page++;
   obj.allpages[obj.page].classList.remove("d-none");
-  // console.log(obj.page);
+  obj.page === obj.allpages.length - 1 &&
+    document.getElementById("next").classList.add("d-none");
 };
 
 const validation_page = () => {

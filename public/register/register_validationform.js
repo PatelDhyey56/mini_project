@@ -49,7 +49,6 @@ const btn = async () => {
               ).innerHTML = `<div class="alert alert-success text-center"n style="width: 250px">Register Time left : ${time}</div>`;
             }
           }, 1000);
-          console.log(timer);
           setTimeout(() => {
             document.getElementById("link").innerHTML = ``;
           }, 60 * 1000);
