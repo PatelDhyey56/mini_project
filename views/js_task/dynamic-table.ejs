@@ -50,34 +50,31 @@
     }
   </style>
   <body>
-    <%- include('../nav.ejs'); %>
     <center>
       <h2>PATEL DHYEY</h2>
       <h2>24DEV054</h2>
     </center>
     <h1><center>Table Editer</center></h1>
     <h3><center>You can add & remove rows & colums</center></h3>
-    <div style="margin: 5%">
-      <div class="contener_top">
-        <b> Colums :</b>
-        <div class="PLUS" onclick="addcol()"><center>+</center></div>
-        <div class="remove" onclick="removecol()"><center>-</center></div>
-      </div>
-      <table id="table">
-        <tr>
-          <td class="C1"></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td class="C1"></td>
-        </tr>
-      </table>
-      <div class="contener_down">
-        <div class="PLUS" onclick="addrow()"><center>+</center></div>
-        <div class="remove" onclick="removerow()"><center>-</center></div>
-        <b> : Rows </b>
-      </div>
+    <div class="contener_top">
+      <b> Colums :</b>
+      <div class="PLUS" onclick="addcol()"><center>+</center></div>
+      <div class="remove" onclick="removecol()"><center>-</center></div>
+    </div>
+    <table id="table">
+      <tr>
+        <td class="C1"></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td class="C1"></td>
+      </tr>
+    </table>
+    <div class="contener_down">
+      <div class="PLUS" onclick="addrow()"><center>+</center></div>
+      <div class="remove" onclick="removerow()"><center>-</center></div>
+      <b> : Rows </b>
     </div>
     <div id="ex"></div>
     <script>
