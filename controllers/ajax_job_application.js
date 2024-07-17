@@ -50,7 +50,7 @@ const post_ajex_update = (req, res) => {
             if (err) {
               errordata = true;
               // throw err;
-              // console.log(err);
+              console.log(err);
             }
             console.log(`1 record in ${table} inserted...`);
           });
@@ -129,12 +129,12 @@ const post_ajex_update = (req, res) => {
         // companys
         for (i = 0; i < data["company_name"].length; i = i + 4) {
           if (data["company_name"][i].length > 0) {
-            // console.log(data["company_name"][i]);
-            let company = `INSERT INTO WORK_EXPERIENCE (INDEX_NO, COMPANY_NAME,DESIGNATION,FORM,LAST_DATE_OF_COMPANY) VALUES (${id},"${
+            console.log(data["company_name"][i]);
+            let company = `INSERT INTO WORK_EXPERIENCE (INDEX_NO, COMPANY_NAME,DESIGNATION,FORM,TO_DATE,COMPANY_ID) VALUES (${id},"${
               data["company_name"][i]
             }","${data["company_name"][Number(i) + 1]}","${
               data["company_name"][Number(i) + 2]
-            }","${data["company_name"][Number(i) + 3]}");`;
+            }","${data["company_name"][Number(i) + 3]}","${Number(i) / 4}");`;
             data_insert(company, `company ${i}`);
           }
         }
@@ -193,7 +193,7 @@ const getid_ajex = async (req, res) => {
       data6: await sqlrun(sql6),
       data7: await sqlrun(sql7),
     };
-    // console.log(obj.data1[0]);
+    console.log(obj.data1[2]);
     if (obj.data1[0]) {
       res.render("job_application_form/ajax_job_application", {
         result: true,
@@ -306,12 +306,13 @@ const postid_ajex = (req, res) => {
     for (i = 0; i < data["company_name"].length; i = i + 4) {
       if (data["company_name"][i].length > 0) {
         // console.log(data["company_name"][i]);
-        let company = `UPDATE WORK_EXPERIENCE 
-          SET COMPANY_NAME="${data["company_name"][i]}",DESIGNATION="${
-          data["company_name"][Number(i) + 1]
-        }",FORM="${data["company_name"][Number(i) + 2]}",TO_DATE="${
+        let company = `UPDATE WORK_EXPERIENCE SET COMPANY_NAME="${
+          data["company_name"][i]
+        }",DESIGNATION="${data["company_name"][Number(i) + 1]}",FORM="${
+          data["company_name"][Number(i) + 2]
+        }",TO_DATE="${
           data["company_name"][Number(i) + 3]
-        }"" WHERE INDEX_NO="${id}" and COMPANY_ID="1";`;
+        }" WHERE INDEX_NO="${id}" and COMPANY_ID="1";`;
         sqlfunc(company, `company ${i}`);
       }
     }
@@ -322,7 +323,7 @@ const postid_ajex = (req, res) => {
         // console.log(data[i][0]);
         let q = `UPDATE REFERANCE_CONTACT SET NAME_OF_PERSON="${
           data["contect_name"][i]
-        }",CONTECT_NO="${data["contect_name"][Number(i) + 1]}",RELATION"${
+        }",CONTECT_NO="${data["contect_name"][Number(i) + 1]}",RELATION="${
           data["contect_name"][Number(i) + 2]
         }" WHERE INDEX_NO="${id}" and REFER_INDEX="1";`;
         sqlfunc(q, `contect ${i}`);
